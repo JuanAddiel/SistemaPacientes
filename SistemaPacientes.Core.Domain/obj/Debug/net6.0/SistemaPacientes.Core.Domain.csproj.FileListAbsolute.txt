@@ -1,0 +1,12 @@
+C:\Users\addie\source\repos\SistemaPacientes\SistemaPacientes.Core.Domain\bin\Debug\net6.0\SistemaPacientes.Core.Domain.deps.json
+C:\Users\addie\source\repos\SistemaPacientes\SistemaPacientes.Core.Domain\bin\Debug\net6.0\SistemaPacientes.Core.Domain.dll
+C:\Users\addie\source\repos\SistemaPacientes\SistemaPacientes.Core.Domain\bin\Debug\net6.0\SistemaPacientes.Core.Domain.pdb
+C:\Users\addie\source\repos\SistemaPacientes\SistemaPacientes.Core.Domain\obj\Debug\net6.0\SistemaPacientes.Core.Domain.csproj.AssemblyReference.cache
+C:\Users\addie\source\repos\SistemaPacientes\SistemaPacientes.Core.Domain\obj\Debug\net6.0\SistemaPacientes.Core.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\addie\source\repos\SistemaPacientes\SistemaPacientes.Core.Domain\obj\Debug\net6.0\SistemaPacientes.Core.Domain.AssemblyInfoInputs.cache
+C:\Users\addie\source\repos\SistemaPacientes\SistemaPacientes.Core.Domain\obj\Debug\net6.0\SistemaPacientes.Core.Domain.AssemblyInfo.cs
+C:\Users\addie\source\repos\SistemaPacientes\SistemaPacientes.Core.Domain\obj\Debug\net6.0\SistemaPacientes.Core.Domain.csproj.CoreCompileInputs.cache
+C:\Users\addie\source\repos\SistemaPacientes\SistemaPacientes.Core.Domain\obj\Debug\net6.0\SistemaPacientes.Core.Domain.dll
+C:\Users\addie\source\repos\SistemaPacientes\SistemaPacientes.Core.Domain\obj\Debug\net6.0\refint\SistemaPacientes.Core.Domain.dll
+C:\Users\addie\source\repos\SistemaPacientes\SistemaPacientes.Core.Domain\obj\Debug\net6.0\SistemaPacientes.Core.Domain.pdb
+C:\Users\addie\source\repos\SistemaPacientes\SistemaPacientes.Core.Domain\obj\Debug\net6.0\ref\SistemaPacientes.Core.Domain.dll

@@ -6,4 +6,16 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="6.0.20">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\SistemaPaciente.Infrastructured.Persistences\SistemaPaciente.Infrastructure.Persistence.csproj" />
+    <ProjectReference Include="..\SistemaPacientes.Core.Application\SistemaPacientes.Core.Application.csproj" />
+  </ItemGroup>
+
 </Project>
