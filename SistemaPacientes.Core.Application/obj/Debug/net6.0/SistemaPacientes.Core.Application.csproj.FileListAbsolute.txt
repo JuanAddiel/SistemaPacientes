@@ -10,3 +10,15 @@ C:\Users\addie\source\repos\SistemaPacientes\SistemaPacientes.Core.Application\o
 C:\Users\addie\source\repos\SistemaPacientes\SistemaPacientes.Core.Application\obj\Debug\net6.0\refint\SistemaPacientes.Core.Application.dll
 C:\Users\addie\source\repos\SistemaPacientes\SistemaPacientes.Core.Application\obj\Debug\net6.0\SistemaPacientes.Core.Application.pdb
 C:\Users\addie\source\repos\SistemaPacientes\SistemaPacientes.Core.Application\obj\Debug\net6.0\ref\SistemaPacientes.Core.Application.dll
+C:\Users\addie\OneDrive\Desktop\Proyect\SistemaPacientes\SistemaPacientes.Core.Application\bin\Debug\net6.0\SistemaPacientes.Core.Application.deps.json
+C:\Users\addie\OneDrive\Desktop\Proyect\SistemaPacientes\SistemaPacientes.Core.Application\bin\Debug\net6.0\SistemaPacientes.Core.Application.dll
+C:\Users\addie\OneDrive\Desktop\Proyect\SistemaPacientes\SistemaPacientes.Core.Application\bin\Debug\net6.0\SistemaPacientes.Core.Application.pdb
+C:\Users\addie\OneDrive\Desktop\Proyect\SistemaPacientes\SistemaPacientes.Core.Application\obj\Debug\net6.0\SistemaPacientes.Core.Application.csproj.AssemblyReference.cache
+C:\Users\addie\OneDrive\Desktop\Proyect\SistemaPacientes\SistemaPacientes.Core.Application\obj\Debug\net6.0\SistemaPacientes.Core.Application.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\addie\OneDrive\Desktop\Proyect\SistemaPacientes\SistemaPacientes.Core.Application\obj\Debug\net6.0\SistemaPacientes.Core.Application.AssemblyInfoInputs.cache
+C:\Users\addie\OneDrive\Desktop\Proyect\SistemaPacientes\SistemaPacientes.Core.Application\obj\Debug\net6.0\SistemaPacientes.Core.Application.AssemblyInfo.cs
+C:\Users\addie\OneDrive\Desktop\Proyect\SistemaPacientes\SistemaPacientes.Core.Application\obj\Debug\net6.0\SistemaPacientes.Core.Application.csproj.CoreCompileInputs.cache
+C:\Users\addie\OneDrive\Desktop\Proyect\SistemaPacientes\SistemaPacientes.Core.Application\obj\Debug\net6.0\SistemaPacientes.Core.Application.dll
+C:\Users\addie\OneDrive\Desktop\Proyect\SistemaPacientes\SistemaPacientes.Core.Application\obj\Debug\net6.0\refint\SistemaPacientes.Core.Application.dll
+C:\Users\addie\OneDrive\Desktop\Proyect\SistemaPacientes\SistemaPacientes.Core.Application\obj\Debug\net6.0\SistemaPacientes.Core.Application.pdb
+C:\Users\addie\OneDrive\Desktop\Proyect\SistemaPacientes\SistemaPacientes.Core.Application\obj\Debug\net6.0\ref\SistemaPacientes.Core.Application.dll

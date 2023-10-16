@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "EZ3pPR3lxzFHB1z7gpRfhuvDiXcu3yQu2UDkGH2uLG4DINFaas0cI+65doH96HZkeWGrnQJ8l3aoCD9mcIBbvw==",
+  "dgSpecHash": "GjAcdYBmoKeV7Z5s3+Pqz8i5oFajXv9BuGl9h8Aubv97+gbXwbOygcNaAwdwZWhpZipZvxdI/eKI85U43it9yQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\addie\\source\\repos\\SistemaPacientes\\SistemaPacientes.Core.Application\\SistemaPacientes.Core.Application.csproj",
+  "projectFilePath": "C:\\Users\\addie\\OneDrive\\Desktop\\Proyect\\SistemaPacientes\\SistemaPacientes.Core.Application\\SistemaPacientes.Core.Application.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\addie\\.nuget\\packages\\microsoft.aspnetcore.http\\2.2.2\\microsoft.aspnetcore.http.2.2.2.nupkg.sha512",
     "C:\\Users\\addie\\.nuget\\packages\\microsoft.aspnetcore.http.abstractions\\2.2.0\\microsoft.aspnetcore.http.abstractions.2.2.0.nupkg.sha512",

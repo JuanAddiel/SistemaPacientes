@@ -2,6 +2,8 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using SistemaPaciente.Infrastructure.Persistence.Context;
+using SistemaPaciente.Infrastructure.Persistence.Repository;
+using SistemaPacientes.Core.Application.Interfaces.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -29,6 +31,14 @@ namespace SistemaPaciente.Infrastructure.Persistence
             #endregion
 
             #region Repositories
+            services.AddTransient(typeof(IGenericRepository<>), typeof(GenericRepository<>));
+            services.AddTransient<IMedicoRepository, MedicoRepository>();
+            services.AddTransient<IPacienteRepository, PacienteRepository>();
+            services.AddTransient<IPruebaRepository, PruebaRepository>();
+            services.AddTransient<IResultadoRepository, ResultadoRepository>();
+            services.AddTransient<ICitaRepository, CitaRepository>();
+
+
             #endregion
 
         }

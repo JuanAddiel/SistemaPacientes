@@ -13,10 +13,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Repository\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\SistemaPacientes.Core.Application\SistemaPacientes.Core.Application.csproj" />
     <ProjectReference Include="..\SistemaPacientes.Core.Domain\SistemaPacientes.Core.Domain.csproj" />
   </ItemGroup>
