@@ -4,11 +4,11 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using SistemaPaciente.Infrastructure.Persistence.Context;
+using SistemaPacientes.Infrastructure.Persistence.Context;
 
 #nullable disable
 
-namespace SistemaPaciente.Infrastructure.Persistence.Migrations
+namespace SistemaPacientes.Infrastructure.Persistence.Migrations
 {
     [DbContext(typeof(SistemaPacienteContext))]
     partial class SistemaPacienteContextModelSnapshot : ModelSnapshot

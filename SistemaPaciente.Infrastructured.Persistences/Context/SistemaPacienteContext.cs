@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SistemaPaciente.Infrastructure.Persistence.Context
+namespace SistemaPacientes.Infrastructure.Persistence.Context
 {
     public class SistemaPacienteContext: DbContext
     {
@@ -93,7 +93,7 @@ namespace SistemaPaciente.Infrastructure.Persistence.Context
             {
                 c.Property(c => c.FechaCita).IsRequired();
                 c.Property(c => c.HoraCita).IsRequired();
-                c.Property(c => c.Estado).HasMaxLength(75).IsRequired();
+                c.Property(c => c.Estado).IsRequired();
                 c.Property(c => c.MotivoCita).IsRequired();
             });
             #endregion

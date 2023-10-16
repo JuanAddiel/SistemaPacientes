@@ -1,4 +1,4 @@
-﻿using SistemaPaciente.Infrastructure.Persistence.Context;
+﻿using SistemaPacientes.Infrastructure.Persistence.Context;
 using SistemaPacientes.Core.Application.Interfaces.Repositories;
 using SistemaPacientes.Core.Domain.Entities;
 using System;
@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SistemaPaciente.Infrastructure.Persistence.Repository
+namespace SistemaPacientes.Infrastructure.Persistence.Repository
 {
     public class PruebaRepository:GenericRepository<PruebaLaboratorio>, IPruebaRepository
     {

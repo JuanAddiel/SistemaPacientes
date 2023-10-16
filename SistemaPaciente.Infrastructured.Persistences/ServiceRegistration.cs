@@ -1,8 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using SistemaPaciente.Infrastructure.Persistence.Context;
-using SistemaPaciente.Infrastructure.Persistence.Repository;
+using SistemaPacientes.Infrastructure.Persistence.Context;
+using SistemaPacientes.Infrastructure.Persistence.Repository;
 using SistemaPacientes.Core.Application.Interfaces.Repositories;
 using System;
 using System.Collections.Generic;
@@ -10,7 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SistemaPaciente.Infrastructure.Persistence
+namespace SistemaPacientes.Infrastructure.Persistence
 {
     public static class ServiceRegistration
     {

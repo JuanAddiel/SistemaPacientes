@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using SistemaPaciente.Infrastructure.Persistence.Context;
+using SistemaPacientes.Infrastructure.Persistence.Context;
 using SistemaPacientes.Core.Application.Interfaces.Repositories;
 using System;
 using System.Collections.Generic;
@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SistemaPaciente.Infrastructure.Persistence.Repository
+namespace SistemaPacientes.Infrastructure.Persistence.Repository
 {
     public class GenericRepository<T> : IGenericRepository<T> where T : class
     {

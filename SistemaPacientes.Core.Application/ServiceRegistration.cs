@@ -1,5 +1,8 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using SistemaPacientes.Core.Application.Interfaces.Repositories;
+using SistemaPacientes.Core.Application.Interfaces.Services;
+using SistemaPacientes.Core.Application.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,6 +15,13 @@ namespace SistemaPacientes.Core.Application
     {
         public static void AddApplicationLayer (this IServiceCollection services, IConfiguration configuration)
         {
+            #region Services
+            services.AddTransient<ICitaServices, CitaServices>();
+            services.AddTransient<IMedicoServices, MedicoServices>();
+            services.AddTransient<IPacienteServices, PacienteServices>();
+            services.AddTransient<IPruebaServices, PruebaLaboratorioServices>();
+            services.AddTransient<IResultadoServices, ResultadoLaboratorioServices>();
+            #endregion
         }
     }
 }
