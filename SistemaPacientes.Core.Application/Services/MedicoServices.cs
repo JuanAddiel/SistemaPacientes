@@ -1,6 +1,7 @@
 ﻿using SistemaPacientes.Core.Application.Interfaces.Repositories;
 using SistemaPacientes.Core.Application.Interfaces.Services;
 using SistemaPacientes.Core.Application.ViewModels.Medico;
+using SistemaPacientes.Core.Domain.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,29 +17,83 @@ namespace SistemaPacientes.Core.Application.Services
         {
             _medicoRepository = medicoRepository;
         }
-        public Task<MedicoViewModel> AddAsync(MedicoSaveViewModel saveViewModel)
+        public async Task<MedicoSaveViewModel> AddAsync(MedicoSaveViewModel saveViewModel)
         {
-            throw new NotImplementedException();
+            Medico medico = new();
+            medico.Id = saveViewModel.Id;
+            medico.Nombre = saveViewModel.Nombre;
+            medico.Apellido = saveViewModel.Apellido;
+            medico.Correo = saveViewModel.Correo;
+            medico.Telefono = saveViewModel.Telefono;
+            medico.Cedula = saveViewModel.Cedula;
+            medico.Foto = saveViewModel.Foto;
+
+            medico = await _medicoRepository.AddAsync(medico);
+
+            MedicoSaveViewModel vm = new();
+            vm.Id = medico.Id;
+            vm.Nombre = medico.Nombre;
+            vm.Apellido= medico.Apellido;
+            vm.Correo = medico.Correo;
+            vm.Telefono= medico.Telefono;
+            vm.Cedula= medico.Cedula;
+            vm.Foto = medico.Foto;
+
+            return vm;
+
+
         }
 
-        public Task<bool> DeleteAsync(int id)
+        public async Task DeleteAsync(int id)
         {
-            throw new NotImplementedException();
+            var medico = await _medicoRepository.GetByIdAsync(id);
+            await _medicoRepository.DeleteAsync(medico);
         }
 
-        public Task<ICollection<MedicoViewModel>> GetAllAsync()
+        public async Task<ICollection<MedicoViewModel>> GetAllAsync()
         {
-            throw new NotImplementedException();
+            var medicos = await _medicoRepository.GetAllAsyncInclude(new List<string> { "citas"});
+            return medicos.Select(m => new MedicoViewModel
+            {
+                Id = m.Id,
+                Nombre = m.Nombre,
+                Apellido = m.Apellido,
+                Correo = m.Correo,
+                Telefono= m.Telefono,
+                Cedula= m.Cedula,
+                Foto = m.Foto,
+
+            }).ToList();
         }
 
-        public Task<MedicoViewModel> GetByIdAsync(int id)
+        public async Task<MedicoSaveViewModel> GetByIdAsync(int id)
         {
-            throw new NotImplementedException();
+            var medico = await _medicoRepository.GetByIdAsync(id);
+            MedicoSaveViewModel vm = new();
+            vm.Id = medico.Id;
+            vm.Nombre = medico.Nombre;
+            vm.Apellido = medico.Apellido;
+            vm.Correo = medico.Correo;
+            vm.Telefono = medico.Telefono;
+            vm.Cedula = medico.Cedula;
+            vm.Foto = medico.Foto;
+
+            return vm;
+
         }
 
-        public Task<MedicoViewModel> UpdateAsync(int id, MedicoSaveViewModel saveViewModel)
+        public async Task UpdateAsync(MedicoSaveViewModel saveViewModel)
         {
-            throw new NotImplementedException();
+            Medico medico = await _medicoRepository.GetByIdAsync(saveViewModel.Id);
+            medico.Id = saveViewModel.Id;
+            medico.Nombre = saveViewModel.Nombre;
+            medico.Apellido = saveViewModel.Apellido;
+            medico.Correo = saveViewModel.Correo;
+            medico.Telefono = saveViewModel.Telefono;
+            medico.Cedula = saveViewModel.Cedula;
+            medico.Foto = saveViewModel.Foto;
+
+            await _medicoRepository.UpdateAsync(medico);
         }
     }
 }

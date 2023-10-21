@@ -12,5 +12,8 @@ namespace SistemaPacientes.Core.Application.ViewModels.ResultadoLaboratorio
         public int IdPruebaLaboratorio { get; set; }
         public int IdPaciente { get; set; }
         public bool Estado { get; set; }
+        public string NombrePruebaLaboratorio { get; set; }
+        public string NombrePaciente { get; set; }
+        public string ApellidoPaciente { get; set; }
     }
 }

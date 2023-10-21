@@ -1,6 +1,7 @@
 ﻿using SistemaPacientes.Core.Application.Interfaces.Repositories;
 using SistemaPacientes.Core.Application.Interfaces.Services;
 using SistemaPacientes.Core.Application.ViewModels.PruebaLaboratorio;
+using SistemaPacientes.Core.Domain.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,29 +18,51 @@ namespace SistemaPacientes.Core.Application.Services
             _pruebaRepository = pruebaRepository;
         }
 
-        public Task<PruebaLaboratorioViewModel> AddAsync(PruebaLaboratorioSaveViewModel saveViewModel)
+        public async Task<PruebaLaboratorioSaveViewModel> AddAsync(PruebaLaboratorioSaveViewModel saveViewModel)
         {
-            throw new NotImplementedException();
+            PruebaLaboratorio prueba = new();
+            prueba.Id = saveViewModel.Id;
+            prueba.Nombre = saveViewModel.Nombre;
+            prueba = await _pruebaRepository.AddAsync(prueba);
+
+            PruebaLaboratorioSaveViewModel pruebaSaveViewModel = new();
+            pruebaSaveViewModel.Id = prueba.Id;
+            pruebaSaveViewModel.Nombre = prueba.Nombre;
+            return pruebaSaveViewModel;
+
         }
 
-        public Task<bool> DeleteAsync(int id)
+        public async Task DeleteAsync(int id)
         {
-            throw new NotImplementedException();
+            var prueba = await _pruebaRepository.GetByIdAsync(id);    
+            await _pruebaRepository.DeleteAsync(prueba);
         }
 
-        public Task<ICollection<PruebaLaboratorioViewModel>> GetAllAsync()
+        public async Task<ICollection<PruebaLaboratorioViewModel>> GetAllAsync()
         {
-            throw new NotImplementedException();
+            var prueba = await _pruebaRepository.GetAllAsyncInclude(new List<string> { "ResultadoLaboratorio" });
+            return prueba.Select(p => new PruebaLaboratorioViewModel
+            {
+                Id = p.Id,
+                Nombre = p.Nombre,
+            }).ToList();
         }
 
-        public Task<PruebaLaboratorioViewModel> GetByIdAsync(int id)
+        public async Task<PruebaLaboratorioSaveViewModel> GetByIdAsync(int id)
         {
-            throw new NotImplementedException();
+            var prueba = await _pruebaRepository.GetByIdAsync(id);
+            PruebaLaboratorioSaveViewModel pruebaSaveViewModel = new();
+            pruebaSaveViewModel.Id = prueba.Id;
+            pruebaSaveViewModel.Nombre = prueba.Nombre;
+            return pruebaSaveViewModel;
         }
 
-        public Task<PruebaLaboratorioViewModel> UpdateAsync(int id, PruebaLaboratorioSaveViewModel saveViewModel)
+        public async Task UpdateAsync(PruebaLaboratorioSaveViewModel saveViewModel)
         {
-            throw new NotImplementedException();
+            PruebaLaboratorio prueba = await _pruebaRepository.GetByIdAsync(saveViewModel.Id);
+            prueba.Id = saveViewModel.Id;
+            prueba.Nombre = saveViewModel.Nombre;
+            await _pruebaRepository.UpdateAsync(prueba);
         }
     }
 }

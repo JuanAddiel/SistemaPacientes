@@ -37,6 +37,7 @@ namespace SistemaPacientes.Infrastructure.Persistence
             services.AddTransient<IPruebaRepository, PruebaRepository>();
             services.AddTransient<IResultadoRepository, ResultadoRepository>();
             services.AddTransient<ICitaRepository, CitaRepository>();
+            services.AddTransient<IUsuarioRepository, UsuarioRepository>();
 
 
             #endregion

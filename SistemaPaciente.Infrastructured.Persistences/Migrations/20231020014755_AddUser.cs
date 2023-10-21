@@ -3,9 +3,9 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-namespace SistemaPacientes.Infrastructure.Persistence.Migrations
+namespace SistemaPaciente.Infrastructure.Persistence.Migrations
 {
-    public partial class InitialCreating : Migration
+    public partial class AddUser : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -15,12 +15,12 @@ namespace SistemaPacientes.Infrastructure.Persistence.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
+                    Nombre = table.Column<string>(type: "nvarchar(75)", maxLength: 75, nullable: false),
                     Apellido = table.Column<string>(type: "nvarchar(75)", maxLength: 75, nullable: false),
                     Correo = table.Column<string>(type: "nvarchar(75)", maxLength: 75, nullable: false),
                     Telefono = table.Column<string>(type: "nvarchar(13)", maxLength: 13, nullable: false),
                     Cedula = table.Column<string>(type: "nvarchar(13)", maxLength: 13, nullable: false),
                     Foto = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Nombre = table.Column<string>(type: "nvarchar(75)", maxLength: 75, nullable: false),
                     CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
                     CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     LastModifiedAt = table.Column<DateTime>(type: "datetime2", nullable: true),
@@ -37,6 +37,7 @@ namespace SistemaPacientes.Infrastructure.Persistence.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
+                    Nombre = table.Column<string>(type: "nvarchar(75)", maxLength: 75, nullable: false),
                     Apellido = table.Column<string>(type: "nvarchar(75)", maxLength: 75, nullable: false),
                     Direccion = table.Column<string>(type: "nvarchar(75)", maxLength: 75, nullable: false),
                     Telefono = table.Column<string>(type: "nvarchar(13)", maxLength: 13, nullable: false),
@@ -45,7 +46,6 @@ namespace SistemaPacientes.Infrastructure.Persistence.Migrations
                     Alergias = table.Column<bool>(type: "bit", nullable: false),
                     Fuma = table.Column<bool>(type: "bit", nullable: false),
                     FechaNacimiento = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    Nombre = table.Column<string>(type: "nvarchar(75)", maxLength: 75, nullable: false),
                     CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
                     CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     LastModifiedAt = table.Column<DateTime>(type: "datetime2", nullable: true),
@@ -74,6 +74,27 @@ namespace SistemaPacientes.Infrastructure.Persistence.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Usuario",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Nombre = table.Column<string>(type: "nvarchar(75)", maxLength: 75, nullable: false),
+                    Phone = table.Column<string>(type: "nvarchar(13)", maxLength: 13, nullable: false),
+                    UserName = table.Column<string>(type: "nvarchar(75)", maxLength: 75, nullable: false),
+                    Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Password = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    LastModifiedAt = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    LastModifiedBy = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Usuario", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Cita",
                 columns: table => new
                 {
@@ -84,7 +105,11 @@ namespace SistemaPacientes.Infrastructure.Persistence.Migrations
                     FechaCita = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     HoraCita = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     MotivoCita = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Estado = table.Column<string>(type: "nvarchar(75)", maxLength: 75, nullable: false)
+                    Estado = table.Column<bool>(type: "bit", nullable: false),
+                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    LastModifiedAt = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    LastModifiedBy = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -111,7 +136,11 @@ namespace SistemaPacientes.Infrastructure.Persistence.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     IdPruebaLaboratorio = table.Column<int>(type: "int", nullable: false),
                     IdPaciente = table.Column<int>(type: "int", nullable: false),
-                    Estado = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    Estado = table.Column<bool>(type: "bit", nullable: false),
+                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    LastModifiedAt = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    LastModifiedBy = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -158,6 +187,9 @@ namespace SistemaPacientes.Infrastructure.Persistence.Migrations
 
             migrationBuilder.DropTable(
                 name: "ResultadoLaboratorio");
+
+            migrationBuilder.DropTable(
+                name: "Usuario");
 
             migrationBuilder.DropTable(
                 name: "Medico");

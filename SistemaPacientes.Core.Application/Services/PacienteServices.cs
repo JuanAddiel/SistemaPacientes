@@ -1,6 +1,7 @@
 ﻿using SistemaPacientes.Core.Application.Interfaces.Repositories;
 using SistemaPacientes.Core.Application.Interfaces.Services;
 using SistemaPacientes.Core.Application.ViewModels.Paciente;
+using SistemaPacientes.Core.Domain.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,29 +17,96 @@ namespace SistemaPacientes.Core.Application.Services
         {
             _pacienteRepository = pacienteRepository;
         }
-        public Task<PacienteViewModel> AddAsync(PacienteSaveViewModel saveViewModel)
+
+        public async Task<PacienteSaveViewModel> AddAsync(PacienteSaveViewModel saveViewModel)
         {
-            throw new NotImplementedException();
+            Paciente paciente = new();
+            paciente.Id = saveViewModel.Id;
+            paciente.Nombre = saveViewModel.Nombre;
+            paciente.Apellido = saveViewModel.Apellido;
+            paciente.Direccion = saveViewModel.Direccion;
+            paciente.Telefono = saveViewModel.Telefono;
+            paciente.Cedula = saveViewModel.Cedula;
+            paciente.Foto = saveViewModel.Foto;
+            paciente.Alergias = saveViewModel.Alergias;
+            paciente.Fuma = saveViewModel.Fuma;
+            paciente.FechaNacimiento = saveViewModel.FechaNacimiento;
+            
+            paciente = await _pacienteRepository.AddAsync(paciente);
+
+            PacienteSaveViewModel pacienteVm = new();
+            pacienteVm.Id = paciente.Id;
+            pacienteVm.Nombre = paciente.Nombre;
+            pacienteVm.Apellido = paciente.Apellido;
+            pacienteVm.Direccion = paciente.Direccion;
+            pacienteVm.Telefono = paciente.Telefono;
+            pacienteVm.Cedula = paciente.Cedula;
+            pacienteVm.Foto = paciente.Foto;
+            pacienteVm.Alergias = paciente.Alergias;
+            pacienteVm.Fuma = paciente.Fuma;
+            pacienteVm.FechaNacimiento = paciente.FechaNacimiento;
+
+            return pacienteVm;
+
         }
 
-        public Task<bool> DeleteAsync(int id)
+        public async Task DeleteAsync(int id)
         {
-            throw new NotImplementedException();
+            var paciente = await _pacienteRepository.GetByIdAsync(id);
+            await _pacienteRepository.DeleteAsync(paciente);
         }
 
-        public Task<ICollection<PacienteViewModel>> GetAllAsync()
+        public async Task<ICollection<PacienteViewModel>> GetAllAsync()
         {
-            throw new NotImplementedException();
+            var pacientes = await _pacienteRepository.GetAllAsyncInclude(new List<string> { "Citas", "ResultadoLaboratorios" });
+            return pacientes.Select(paciente => new PacienteViewModel
+            {
+                Id = paciente.Id,
+                Nombre = paciente.Nombre,
+                Apellido = paciente.Apellido,
+                Direccion = paciente.Direccion,
+                Telefono = paciente.Telefono,
+                Cedula = paciente.Cedula,
+                Foto = paciente.Foto,
+                Alergias = paciente.Alergias,
+                Fuma = paciente.Fuma,
+                FechaNacimiento = paciente.FechaNacimiento,
+
+
+            }).ToList();
         }
 
-        public Task<PacienteViewModel> GetByIdAsync(int id)
+        public async Task<PacienteSaveViewModel> GetByIdAsync(int id)
         {
-            throw new NotImplementedException();
+            var paciente = await _pacienteRepository.GetByIdAsync(id);
+            PacienteSaveViewModel pacienteVm = new();
+            pacienteVm.Id = paciente.Id;
+            pacienteVm.Nombre = paciente.Nombre;
+            pacienteVm.Apellido = paciente.Apellido;
+            pacienteVm.Direccion = paciente.Direccion;
+            pacienteVm.Telefono = paciente.Telefono;
+            pacienteVm.Cedula = paciente.Cedula;
+            pacienteVm.Foto = paciente.Foto;
+            pacienteVm.Alergias = paciente.Alergias;
+            pacienteVm.Fuma = paciente.Fuma;
+            pacienteVm.FechaNacimiento = paciente.FechaNacimiento;
+            return pacienteVm;
         }
 
-        public Task<PacienteViewModel> UpdateAsync(int id, PacienteSaveViewModel saveViewModel)
+        public async Task UpdateAsync(PacienteSaveViewModel saveViewModel)
         {
-            throw new NotImplementedException();
+            Paciente paciente = await _pacienteRepository.GetByIdAsync(saveViewModel.Id);  
+            paciente.Id = saveViewModel.Id;
+            paciente.Nombre = saveViewModel.Nombre;
+            paciente.Apellido = saveViewModel.Apellido;
+            paciente.Direccion = saveViewModel.Direccion;
+            paciente.Telefono = saveViewModel.Telefono;
+            paciente.Cedula = saveViewModel.Cedula;
+            paciente.Foto = saveViewModel.Foto;
+            paciente.Alergias = saveViewModel.Alergias;
+            paciente.Fuma = saveViewModel.Fuma;
+            paciente.FechaNacimiento = saveViewModel.FechaNacimiento;
+            await _pacienteRepository.UpdateAsync(paciente);
         }
     }
 }

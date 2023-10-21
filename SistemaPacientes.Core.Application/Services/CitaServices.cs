@@ -1,6 +1,7 @@
 ﻿using SistemaPacientes.Core.Application.Interfaces.Repositories;
 using SistemaPacientes.Core.Application.Interfaces.Services;
 using SistemaPacientes.Core.Application.ViewModels.Cita;
+using SistemaPacientes.Core.Domain.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,29 +17,83 @@ namespace SistemaPacientes.Core.Application.Services
         {
             _citaRepository = citaRepository;
         }
-        public Task<CitaViewModel> AddAsync(CitaSaveViewModel saveViewModel)
+        public async Task<CitaSaveViewModel> AddAsync(CitaSaveViewModel saveViewModel)
         {
-            throw new NotImplementedException();
+            Cita cita = new Cita();
+            cita.Id = saveViewModel.Id;
+            cita.IdMedico = saveViewModel.IdMedico;
+            cita.IdPaciente = saveViewModel.IdPaciente;
+            cita.Estado = saveViewModel.Estado;
+            cita.MotivoCita = saveViewModel.MotivoCita;
+            cita.FechaCita = saveViewModel.FechaCita;
+            cita.HoraCita = saveViewModel.HoraCita;
+
+            cita = await _citaRepository.AddAsync(cita);
+
+            CitaSaveViewModel citaVm = new();
+            citaVm.Id = cita.Id;
+            citaVm.IdMedico = cita.IdMedico;
+            citaVm.IdPaciente = cita.IdPaciente;
+            citaVm.Estado = cita.Estado;
+            citaVm.MotivoCita = cita.MotivoCita;
+            citaVm.FechaCita = cita.FechaCita;
+            citaVm.HoraCita = cita.HoraCita;
+
+            return citaVm;
+
+
         }
 
-        public Task<bool> DeleteAsync(int id)
+        public async Task DeleteAsync(int id)
         {
-            throw new NotImplementedException();
+            var cita = await _citaRepository.GetByIdAsync(id);
+            await _citaRepository.DeleteAsync(cita);
         }
 
-        public Task<ICollection<CitaViewModel>> GetAllAsync()
+        public async Task<ICollection<CitaViewModel>> GetAllAsync()
         {
-            throw new NotImplementedException();
+            var citas = await _citaRepository.GetAllAsyncInclude(new List<string> { "Medico","Paciente"});
+            return citas.Select(cita => new CitaViewModel
+            {
+                Id = cita.Id,
+                IdMedico = cita.IdMedico,
+                IdPaciente = cita.IdPaciente,
+                Estado = cita.Estado,
+                MotivoCita = cita.MotivoCita,
+                FechaCita = cita.FechaCita,
+                HoraCita = cita.HoraCita,
+                NombreMedico = cita.Medico.Nombre,
+                NombrePaciente = cita.Paciente.Nombre
+
+            }).ToList();
         }
 
-        public Task<CitaViewModel> GetByIdAsync(int id)
+        public async Task<CitaSaveViewModel> GetByIdAsync(int id)
         {
-            throw new NotImplementedException();
+            var cita = await _citaRepository.GetByIdAsync(id);
+            CitaSaveViewModel citaVm = new();
+            citaVm.Id = cita.Id;
+            citaVm.IdMedico = cita.IdMedico;
+            citaVm.IdPaciente = cita.IdPaciente;
+            citaVm.Estado = cita.Estado;
+            citaVm.MotivoCita = cita.MotivoCita;
+            citaVm.FechaCita = cita.FechaCita;
+            citaVm.HoraCita = cita.HoraCita;
+            return citaVm;
+
         }
 
-        public Task<CitaViewModel> UpdateAsync(int id, CitaSaveViewModel saveViewModel)
+        public async Task UpdateAsync(CitaSaveViewModel saveViewModel)
         {
-            throw new NotImplementedException();
+            Cita cita = await _citaRepository.GetByIdAsync(saveViewModel.Id);
+            cita.Id = saveViewModel.Id;
+            cita.IdMedico = saveViewModel.IdMedico;
+            cita.IdPaciente = saveViewModel.IdPaciente;
+            cita.Estado = saveViewModel.Estado;
+            cita.MotivoCita = saveViewModel.MotivoCita;
+            cita.FechaCita = saveViewModel.FechaCita;
+            cita.HoraCita = saveViewModel.HoraCita;
+            await _citaRepository.UpdateAsync(cita);
         }
     }
 }

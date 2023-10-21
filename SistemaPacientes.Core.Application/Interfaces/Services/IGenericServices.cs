@@ -11,9 +11,9 @@ namespace SistemaPacientes.Core.Application.Interfaces.Services
         where ViewModel : class
     {
         Task<ICollection<ViewModel>> GetAllAsync();
-        Task<ViewModel> GetByIdAsync(int id);
-        Task<ViewModel> AddAsync(SaveViewModel saveViewModel);
-        Task<ViewModel> UpdateAsync(int id, SaveViewModel saveViewModel);
-        Task<bool> DeleteAsync(int id);
+        Task<SaveViewModel> GetByIdAsync(int id);
+        Task<SaveViewModel> AddAsync(SaveViewModel saveViewModel);
+        Task UpdateAsync(SaveViewModel saveViewModel);
+        Task DeleteAsync(int id);
     }
 }

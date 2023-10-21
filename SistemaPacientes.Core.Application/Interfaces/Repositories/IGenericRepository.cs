@@ -13,5 +13,6 @@ namespace SistemaPacientes.Core.Application.Interfaces.Repositories
         Task<T> AddAsync(T entity);
         Task<T> UpdateAsync(T entity);
         Task<T> DeleteAsync(T entity);
+        Task<ICollection<T>> GetAllAsyncInclude(List<string> properties);
     }
 }

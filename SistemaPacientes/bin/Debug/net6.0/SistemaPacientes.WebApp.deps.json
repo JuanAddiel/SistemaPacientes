@@ -545,7 +545,8 @@
           "Microsoft.EntityFrameworkCore": "6.0.20",
           "Microsoft.EntityFrameworkCore.InMemory": "6.0.20",
           "Microsoft.Extensions.Options.ConfigurationExtensions": "6.0.0",
-          "Newtonsoft.Json": "13.0.3"
+          "Newtonsoft.Json": "13.0.3",
+          "SistemaPacientes.Core.Domain": "1.0.0"
         },
         "runtime": {
           "SistemaPacientes.Core.Application.dll": {}

@@ -15,5 +15,6 @@ namespace SistemaPacientes.Core.Application.ViewModels.Medico
         public string Telefono { get; set; }
         public string Cedula { get; set; }
         public string Foto { get; set; }
+        public int CitaCount { get; set; }
     }
 }

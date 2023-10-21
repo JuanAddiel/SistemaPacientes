@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using SistemaPacientes.Models;
+using SistemaPacientes.WebApp.Middlewares;
 using System.Diagnostics;
 
 namespace SistemaPacientes.Controllers
@@ -7,14 +8,19 @@ namespace SistemaPacientes.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-
-        public HomeController(ILogger<HomeController> logger)
+        private readonly ValidateSession _validateSession;
+        public HomeController(ILogger<HomeController> logger, ValidateSession validateSession)
         {
             _logger = logger;
+            _validateSession = validateSession;
         }
 
         public IActionResult Index()
         {
+            if (!_validateSession.HasUser())
+            {
+                return RedirectToRoute(new { controller = "Usuario", action = "Index" });
+            }
             return View();
         }
 

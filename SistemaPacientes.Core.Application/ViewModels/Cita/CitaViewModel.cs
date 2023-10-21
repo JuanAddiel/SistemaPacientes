@@ -16,5 +16,7 @@ namespace SistemaPacientes.Core.Application.ViewModels.Cita
         public string HoraCita { get; set; }
         public string MotivoCita { get; set; }
         public bool Estado { get; set; }
+        public string NombrePaciente { get; set; }
+        public string NombreMedico { get; set; }
     }
 }

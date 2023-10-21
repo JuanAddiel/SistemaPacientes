@@ -1,4 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using SistemaPacientes.Core.Application.ViewModels.User;
+using SistemaPacientes.Core.Domain.Common;
 using SistemaPacientes.Core.Domain.Entities;
 using System;
 using System.Collections.Generic;
@@ -13,11 +15,30 @@ namespace SistemaPacientes.Infrastructure.Persistence.Context
         public SistemaPacienteContext(DbContextOptions<SistemaPacienteContext> options) : base(options)
         {
         }
+        public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = new())
+        {
+            foreach (var entry in ChangeTracker.Entries<AuditableBaseEntity>())
+            {
+                switch (entry.State)
+                {
+                    case EntityState.Added:
+                        entry.Entity.CreatedAt = DateTime.Now;
+                        entry.Entity.CreatedBy = "Default";
+                        break;
+                    case EntityState.Modified:
+                        entry.Entity.LastModifiedAt = DateTime.Now;
+                        entry.Entity.LastModifiedBy = "Default";
+                        break;
+                }
+            }
+            return base.SaveChangesAsync(cancellationToken);
+        }
         public DbSet<Paciente> pacientes { get; set; }
         public DbSet<Cita> citas { get; set; }
         public DbSet<Medico> medicos { get; set; }
         public DbSet<PruebaLaboratorio> pruebaLaboratorios { get; set; }
         public DbSet<ResultadoLaboratorio> resultadoLaboratorios { get; set; }
+        public DbSet<Usuario> Usuarios { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -27,6 +48,7 @@ namespace SistemaPacientes.Infrastructure.Persistence.Context
             modelBuilder.Entity<Medico>().ToTable("Medico");
             modelBuilder.Entity<PruebaLaboratorio>().ToTable("PruebaLaboratorio");
             modelBuilder.Entity<ResultadoLaboratorio>().ToTable("ResultadoLaboratorio");
+            modelBuilder.Entity<Usuario>().ToTable("Usuario");
             #endregion
             #region Primary Key
             modelBuilder.Entity<Paciente>().HasKey(p => p.Id);
@@ -34,7 +56,7 @@ namespace SistemaPacientes.Infrastructure.Persistence.Context
             modelBuilder.Entity<Medico>().HasKey(p => p.Id);
             modelBuilder.Entity<PruebaLaboratorio>().HasKey(p => p.Id);
             modelBuilder.Entity<ResultadoLaboratorio>().HasKey(p => p.Id);
-
+            modelBuilder.Entity<Usuario>().HasKey(p => p.Id);
             #endregion
             #region Foreign Key 
             modelBuilder.Entity<Paciente>()
@@ -63,6 +85,16 @@ namespace SistemaPacientes.Infrastructure.Persistence.Context
 
             #endregion
             #region Properties
+            #region Usuario
+            modelBuilder.Entity<Usuario>(u =>
+            {
+                u.Property(u => u.Nombre).HasMaxLength(75).IsRequired();
+                u.Property(u => u.Phone).HasMaxLength(13).IsRequired();
+                u.Property(u => u.UserName).HasMaxLength(75).IsRequired();
+                u.Property(u => u.Email).IsRequired();
+                u.Property(u => u.Password).IsRequired();
+            });
+            #endregion
             #region Paciente
             modelBuilder.Entity<Paciente>(p =>
             {
