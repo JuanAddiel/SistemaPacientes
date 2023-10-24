@@ -10,6 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
 namespace SistemaPacientes.Infrastructure.Persistence
 {
     public static class ServiceRegistration
@@ -38,6 +39,7 @@ namespace SistemaPacientes.Infrastructure.Persistence
             services.AddTransient<IResultadoRepository, ResultadoRepository>();
             services.AddTransient<ICitaRepository, CitaRepository>();
             services.AddTransient<IUsuarioRepository, UsuarioRepository>();
+            services.AddTransient<IRoleRepository, RoleRepository>();
 
 
             #endregion

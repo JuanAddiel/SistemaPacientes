@@ -9,7 +9,9 @@ namespace SistemaPacientes.WebApp.Controllers
     public class UsuarioController : Controller
     {
         private readonly IUsuarioServices _usuarioServices;
-        public UsuarioController(IUsuarioServices usuarioServices) => _usuarioServices = usuarioServices;
+        private readonly IRoleServices _roleServices;
+        public UsuarioController(IUsuarioServices usuarioServices, IRoleServices roleServices)
+        { _usuarioServices = usuarioServices; _roleServices = roleServices; }
 
         public IActionResult Index()
         {
@@ -35,9 +37,11 @@ namespace SistemaPacientes.WebApp.Controllers
 
             return View(vm);
         }
-        public IActionResult Register()
+        public async Task<IActionResult> Register()
         {
-            return View(new UserSaveViewModel());
+            UserSaveViewModel vm =new();
+            vm.Roles = await _roleServices.GetAllAsync();
+            return View("Register",vm);
         }
         public IActionResult Logout()
         {
@@ -49,7 +53,8 @@ namespace SistemaPacientes.WebApp.Controllers
         {
             if(!ModelState.IsValid)
             {
-                return View(userView);
+                userView.Roles = await _roleServices.GetAllAsync();
+                return View("Register", userView);
             }
             await _usuarioServices.AddAsync(userView);
             return RedirectToRoute(new { controller = "Usuario", action = "Index" });

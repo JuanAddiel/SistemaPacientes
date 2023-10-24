@@ -10,9 +10,10 @@ namespace SistemaPacientes.Core.Application.ViewModels.User
     public class LoginViewModel
     {
         [Required(ErrorMessage = "El nombre de usuario es requerido")]
+        [DataType(DataType.Text)]
         public string UserName { get; set; }
         [Required(ErrorMessage = "La contraseña es requerido")]
-
+        [DataType(DataType.Password)]
         public string Password { get; set; }
     }
 }

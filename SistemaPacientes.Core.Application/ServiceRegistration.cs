@@ -22,6 +22,7 @@ namespace SistemaPacientes.Core.Application
             services.AddTransient<IPruebaServices, PruebaLaboratorioServices>();
             services.AddTransient<IResultadoServices, ResultadoLaboratorioServices>();
             services.AddTransient<IUsuarioServices, UsuarioServices>();
+            services.AddTransient<IRoleServices, RoleServices>();
             #endregion
         }
     }

@@ -3,7 +3,13 @@
 @{
     ViewData["Title"] = "Registrarme";
 }
-
+@if (Model.Roles == null || Model.Roles.Count == 0)
+{
+    <div class="alert alert-warning">
+        <p>No hay roles creadas</p>
+        <a asp-controller="Usuario" asp-action="Index" class="btn btn-primary">Volver atras</a>
+    </div>
+}
 <section class=" vh-100">
     <div class="container-fluid h-custom p-3">
         <div class="shadow-lg p-3 mb-3 bg-body-tertiary rounded row d-flex justify-content-center align-items-center h-100">
@@ -41,6 +47,13 @@
                             </div>
                         </div>
                     </div>
+                    <div class="mb-3">
+                        <select asp-for="RoleId" asp-items="@(new SelectList(Model.Roles,"Id","Name"))" class="form-control form-control-lg">
+                            <option value="0">-- Select a role --</option>
+                        </select>
+                        <span asp-validation-for="RoleId" class="text-danger"></span>
+                    </div>
+
                     <div class="row mb-4">
                         <div class="col">
                             <div class="form-outline mb-3">

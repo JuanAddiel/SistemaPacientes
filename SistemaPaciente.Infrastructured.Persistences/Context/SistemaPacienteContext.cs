@@ -39,6 +39,7 @@ namespace SistemaPacientes.Infrastructure.Persistence.Context
         public DbSet<PruebaLaboratorio> pruebaLaboratorios { get; set; }
         public DbSet<ResultadoLaboratorio> resultadoLaboratorios { get; set; }
         public DbSet<Usuario> Usuarios { get; set; }
+        public DbSet<Role> Role { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -49,6 +50,7 @@ namespace SistemaPacientes.Infrastructure.Persistence.Context
             modelBuilder.Entity<PruebaLaboratorio>().ToTable("PruebaLaboratorio");
             modelBuilder.Entity<ResultadoLaboratorio>().ToTable("ResultadoLaboratorio");
             modelBuilder.Entity<Usuario>().ToTable("Usuario");
+            modelBuilder.Entity<Role>().ToTable("Role");
             #endregion
             #region Primary Key
             modelBuilder.Entity<Paciente>().HasKey(p => p.Id);
@@ -57,6 +59,7 @@ namespace SistemaPacientes.Infrastructure.Persistence.Context
             modelBuilder.Entity<PruebaLaboratorio>().HasKey(p => p.Id);
             modelBuilder.Entity<ResultadoLaboratorio>().HasKey(p => p.Id);
             modelBuilder.Entity<Usuario>().HasKey(p => p.Id);
+            modelBuilder.Entity<Role>().HasKey(p => p.Id);
             #endregion
             #region Foreign Key 
             modelBuilder.Entity<Paciente>()
@@ -83,8 +86,21 @@ namespace SistemaPacientes.Infrastructure.Persistence.Context
                 .HasForeignKey(p => p.IdPruebaLaboratorio)
                 .OnDelete(DeleteBehavior.Cascade);
 
+            modelBuilder.Entity<Role>()
+                .HasMany<Usuario>(Role => Role.Usuarios)
+                .WithOne(Usuario => Usuario.Role)
+                .HasForeignKey(Usuario => Usuario.RoleId)
+                .OnDelete(DeleteBehavior.Cascade);
+
             #endregion
             #region Properties
+            #region Role
+            modelBuilder.Entity<Role>(r =>
+            {
+                r.Property(r => r.Name).HasMaxLength(75).IsRequired();
+                r.Property(r => r.Description).HasMaxLength(75).IsRequired();
+            });
+            #endregion
             #region Usuario
             modelBuilder.Entity<Usuario>(u =>
             {

@@ -262,6 +262,29 @@ namespace SistemaPaciente.Infrastructure.Persistence.Migrations
                     b.ToTable("ResultadoLaboratorio", (string)null);
                 });
 
+            modelBuilder.Entity("SistemaPacientes.Core.Domain.Entities.Role", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasMaxLength(75)
+                        .HasColumnType("nvarchar(75)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(75)
+                        .HasColumnType("nvarchar(75)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Role", (string)null);
+                });
+
             modelBuilder.Entity("SistemaPacientes.Core.Domain.Entities.Usuario", b =>
                 {
                     b.Property<int>("Id")
@@ -301,12 +324,17 @@ namespace SistemaPaciente.Infrastructure.Persistence.Migrations
                         .HasMaxLength(13)
                         .HasColumnType("nvarchar(13)");
 
+                    b.Property<int>("RoleId")
+                        .HasColumnType("int");
+
                     b.Property<string>("UserName")
                         .IsRequired()
                         .HasMaxLength(75)
                         .HasColumnType("nvarchar(75)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("RoleId");
 
                     b.ToTable("Usuario", (string)null);
                 });
@@ -349,6 +377,17 @@ namespace SistemaPaciente.Infrastructure.Persistence.Migrations
                     b.Navigation("PruebaLaboratorio");
                 });
 
+            modelBuilder.Entity("SistemaPacientes.Core.Domain.Entities.Usuario", b =>
+                {
+                    b.HasOne("SistemaPacientes.Core.Domain.Entities.Role", "Role")
+                        .WithMany("Usuarios")
+                        .HasForeignKey("RoleId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Role");
+                });
+
             modelBuilder.Entity("SistemaPacientes.Core.Domain.Entities.Medico", b =>
                 {
                     b.Navigation("citas");
@@ -364,6 +403,11 @@ namespace SistemaPaciente.Infrastructure.Persistence.Migrations
             modelBuilder.Entity("SistemaPacientes.Core.Domain.Entities.PruebaLaboratorio", b =>
                 {
                     b.Navigation("ResultadoLaboratorio");
+                });
+
+            modelBuilder.Entity("SistemaPacientes.Core.Domain.Entities.Role", b =>
+                {
+                    b.Navigation("Usuarios");
                 });
 #pragma warning restore 612, 618
         }

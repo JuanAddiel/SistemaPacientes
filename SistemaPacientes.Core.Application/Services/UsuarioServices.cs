@@ -29,6 +29,7 @@ namespace SistemaPacientes.Core.Application.Services
             userViewModel.Phone = usuario.Phone;
             userViewModel.UserName = usuario.UserName;
             userViewModel.Password = usuario.Password;
+            userViewModel.RoleId = usuario.RoleId;
             return userViewModel;
 
         }
@@ -40,6 +41,7 @@ namespace SistemaPacientes.Core.Application.Services
             usuario.Phone = saveViewModel.Phone;
             usuario.UserName = saveViewModel.UserName;
             usuario.Password = saveViewModel.Password;
+            usuario.RoleId = saveViewModel.RoleId;
             await _usuarioRepository.AddAsync(usuario);
 
             usuario = await _usuarioRepository.GetByIdAsync(usuario.Id);
@@ -49,6 +51,7 @@ namespace SistemaPacientes.Core.Application.Services
             saveViewModel.Phone = usuario.Phone;
             saveViewModel.UserName = usuario.UserName;
             saveViewModel.Password = usuario.Password;
+            saveViewModel.RoleId = usuario.RoleId;
             return saveViewModel;
 
         }
@@ -74,6 +77,7 @@ namespace SistemaPacientes.Core.Application.Services
             saveViewModel.Phone = usuario.Phone;
             saveViewModel.UserName = usuario.UserName;
             saveViewModel.Password = usuario.Password;
+            saveViewModel.RoleId = usuario.RoleId;
             return saveViewModel;   
         }
 
@@ -85,6 +89,7 @@ namespace SistemaPacientes.Core.Application.Services
             usuario.Phone = saveViewModel.Phone;
             usuario.UserName = saveViewModel.UserName;
             usuario.Password = saveViewModel.Password;
+            usuario.RoleId = saveViewModel.RoleId;
             await _usuarioRepository.UpdateAsync(usuario);
         }
     }

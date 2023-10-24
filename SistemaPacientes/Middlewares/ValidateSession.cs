@@ -12,12 +12,27 @@ namespace SistemaPacientes.WebApp.Middlewares
         public bool HasUser()
         {
             UserViewModel user = _httpContext.HttpContext.Session.Get<UserViewModel>("user");
-            if(user == null)
+            if (user == null)
             {
                 return false;
             }
 
             return true;
+        }
+        public bool HasAdmin()
+        {
+            if (HasUser())
+            {
+                int user = _httpContext.HttpContext.Session.Get<UserViewModel>("user").RoleId;
+                if (user == 1)
+                {
+                    return true;
+                }
+
+            }
+
+            return false;
+
         }
     }
 }

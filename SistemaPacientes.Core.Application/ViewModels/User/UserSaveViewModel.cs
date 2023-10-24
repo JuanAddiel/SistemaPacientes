@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SistemaPacientes.Core.Application.ViewModels.Role;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -29,5 +30,9 @@ namespace SistemaPacientes.Core.Application.ViewModels.User
         [Required(ErrorMessage = "La confirmacion de contraseña es requerido")]
         [DataType(DataType.Password)]
         public string ConfirmPassword { get; set; }
+        [Required(ErrorMessage = "El rol es requerido")]
+        public int RoleId { get; set; }
+        public ICollection<RoleViewModel> ?Roles { get; set; }
+
     }
 }

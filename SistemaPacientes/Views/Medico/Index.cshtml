@@ -1,0 +1,36 @@
+﻿@using SistemaPacientes.Core.Application.ViewModels.Medico
+@model ICollection<MedicoViewModel>
+@{
+    ViewData["Title"] = "Mantenimiento Medicos";
+}
+
+<div class="container my-2">
+    <div class="p-5 text-center bg-body-tertiary rounded-3">
+        <img class="bi mt-4 mb-3" src="~/image/Logo.png" width="100" height="100" style="color: var(--bs-indigo); --darkreader-inline-color: var(--darkreader-text--bs-indigo);">
+        <h1 class="text-body-emphasis">Mantenimiento de Medicos</h1>
+        <p class="col-lg-8 mx-auto fs-5 text-muted">
+            Este sistema es fundamental para garantizar una gestión eficiente de los médicos en una organización de atención médica, lo que facilita la asignación de tareas, la programación de citas y la administración de recursos humanos.  
+        </p>
+        <div class="d-inline-flex gap-2 mb-5">
+            <a asp-controller="Medico" asp-action="Create" class="d-inline-flex align-items-center btn btn-primary btn-lg px-4 rounded-pill" type="button">
+                Crear Medico
+            </a>
+            <button asp-controller="Home" asp-action="Index" class="btn btn-outline-secondary btn-lg px-4 rounded-pill" type="button">
+                Volver Atras
+            </button>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-4 d-flex flex-column align-items-center text-center">
+            <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder" preserveAspectRatio="xMidYMid slice" focusable="false">
+                <title>Placeholder</title>
+                <img width="100" height="100" x="20" y="20" src="~/image/Logo.png" />
+            </svg>
+            <h2 class="fw-normal">Heading</h2>
+            <p>Algo de contenido de marcador de posición representativo para las tres columnas de texto debajo del carrusel. Esta es la primera columna.</p>
+            <p><a class="btn btn-secondary" href="#">Ver detalles »</a></p>
+        </div>
+    </div>
+</div>

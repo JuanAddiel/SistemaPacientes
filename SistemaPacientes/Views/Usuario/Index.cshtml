@@ -3,7 +3,36 @@
 @{
     ViewData["Title"] = "Iniciar Seccion";
 }
-<section class=" vh-100">
+
+<div class="container my-2 d-flex justify-content-center align-items-center h-100">
+    <div class="form-signin">
+        @Html.ValidationSummary(false, "", new { @class = "text-danger" })
+        <form method="post" asp-controller="Usuario" asp-action="Index">
+            <img class="mt-4 mb-3 mx-auto d-block" src="~/image/Logo.png" alt="" width="72" height="72">
+
+            <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
+
+            <div class="form-floating">
+                <input asp-for="UserName" class="form-control" id="floatingInput" placeholder="UserName">
+                <label for="floatingInput">Username</label>
+            </div>
+            <div class="form-floating">
+                <input asp-for="Password" class="form-control" id="floatingPassword" placeholder="Password">
+                <label for= "floatingPassword">Password</label>
+            </div>
+
+            <div class="form-check text-start my-3">
+                <input class="form-check-input" type="checkbox" value="remember-me" id="flexCheckDefault">
+                <label class="form-check-label" for="flexCheckDefault">
+                    Remember me
+                </label>
+            </div>
+            <button class="btn btn-primary w-100 py-2">Sign in</button>
+        </form>
+    </div>
+</div>
+
+@* <section class=" vh-100">
     <div class="container-fluid h-custom p-3">
 
         <div class="shadow-lg p-3 mb-3 bg-body-tertiary rounded row d-flex justify-content-center align-items-center h-100">
@@ -14,7 +43,7 @@
             </div>
             <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
 
-                <form method="post" asp-controller="User" asp-action="Index">
+                <form method="post" asp-controller="Usuario" asp-action="Index">
                     <!-- Email input -->
                     <div class="form-outline mb-4">
                         <input asp-for="UserName" class="form-control form-control-lg"
@@ -41,4 +70,4 @@
     </div>
     </div>
 
-</section>
+</section> *@
