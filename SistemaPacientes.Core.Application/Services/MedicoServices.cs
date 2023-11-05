@@ -28,6 +28,7 @@ namespace SistemaPacientes.Core.Application.Services
             medico.Cedula = saveViewModel.Cedula;
             medico.Foto = saveViewModel.Foto;
 
+
             medico = await _medicoRepository.AddAsync(medico);
 
             MedicoSaveViewModel vm = new();
@@ -37,7 +38,8 @@ namespace SistemaPacientes.Core.Application.Services
             vm.Correo = medico.Correo;
             vm.Telefono= medico.Telefono;
             vm.Cedula= medico.Cedula;
-            vm.Foto = medico.Foto;
+            vm.File = saveViewModel.File;
+
 
             return vm;
 
@@ -78,6 +80,7 @@ namespace SistemaPacientes.Core.Application.Services
             vm.Cedula = medico.Cedula;
             vm.Foto = medico.Foto;
 
+
             return vm;
 
         }
@@ -92,6 +95,8 @@ namespace SistemaPacientes.Core.Application.Services
             medico.Telefono = saveViewModel.Telefono;
             medico.Cedula = saveViewModel.Cedula;
             medico.Foto = saveViewModel.Foto;
+
+
 
             await _medicoRepository.UpdateAsync(medico);
         }

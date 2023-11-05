@@ -1,0 +1,120 @@
+﻿@using SistemaPacientes.Core.Application.ViewModels.Paciente;
+@model PacienteSaveViewModel;
+@{
+    bool editMode = Model.Id == 0 ? false : true;
+    ViewData["Title"] = editMode ? "Edit Paciente" : "Add Paciente";
+
+}
+
+<div class="container">
+    <main>
+        <div class="py-5 text-center">
+            <img class="d-block mx-auto mb-4" src="~/image/Logo.png" alt="" width="72" height="72">
+            <h2>Creando Medico</h2>
+            <p class="lead">Below is an example form built entirely with Bootstrap’s form controls. Each required form group has a validation state that can be triggered by attempting to submit the form without completing it.</p>
+        </div>
+
+        <div class="row g-5">
+            <div class="col-md-5 col-lg-4 order-md-last">
+
+                <img src="~/image/Logo.png" class="rounded mx-auto d-block" alt="...">
+            </div>
+            <div class="col-md-7 col-lg-8">
+                <h4 class="mb-3">Billing address</h4>
+                <form class="needs-validation" asp-controller="Paciente" asp-action="@(editMode ? "Edit" : "Create")" novalidate="">
+                    <div class="row g-3">
+                        <div class="col-sm-6">
+                            <label asp-for="Nombre" class="form-label">Nombre</label>
+                            <input class="form-control @(string.IsNullOrWhiteSpace(Model.Nombre) ? "is-invalid" : "is-valid" )" asp-for="Nombre" placeholder="">
+                            <span asp-validation-for="Nombre" class="text-danger"></span>
+
+                        </div>
+
+                        <div class="col-sm-6">
+                            <label asp-for="Apellido" class="form-label">Apellido</label>
+                            <input type="text" class="form-control @(string.IsNullOrWhiteSpace(Model.Apellido) ? "is-invalid" : "is-valid" )" asp-for="Apellido" placeholder="">
+                            <span asp-validation-for="Apellido" class="text-danger"></span>
+
+                        </div>
+
+                        <div class="col-12">
+                            <label asp-for="Direccion" for="Direccion" class="form-label">Direccion</label>
+                            <input class="form-control @(string.IsNullOrWhiteSpace(Model.Direccion) ? "is-invalid" : "is-valid" )" asp-for="Direccion" id="Direccion" placeholder="C/ Benito">
+                            <span asp-validation-for="Direccion" class="text-danger"></span>
+                        </div>
+
+                        <div class="col-12">
+                            <label asp-for="Telefono" class="form-label" for="Telefono">Telefono</label>
+                            <input asp-for="Telefono" class="form-control @(string.IsNullOrWhiteSpace(Model.Telefono) ? "is-invalid" : "is-valid" )" id="Telefono" placeholder="809-000-9999">
+                            <span asp-validation-for="Telefono" class="text-danger"></span>
+                        </div>
+
+
+                        <div class="col-12">
+                            <label asp-for="Cedula" for="cedula" class="form-label">Cedula</label>
+                            <input asp-for="Cedula" class="form-control @(string.IsNullOrWhiteSpace(Model.Cedula) ? "is-invalid" : "is-valid" )" id="cedula" placeholder="402-0000290-0" required="">
+                            <span asp-validation-for="Cedula" class="text-danger"></span>
+                        </div>
+
+                        <div class="col-12">
+                            <label asp-for="FechaNacimiento" for="FechaNacimiento" class="form-label">Fecha Nacimiento</label>
+                            <input asp-for="FechaNacimiento" class="form-control" id="FechaNacimiento"  required="">
+                            <span asp-validation-for="FechaNacimiento" class="text-danger"></span>
+                        </div>
+
+
+                        <div class="col-12">
+                            <label asp-for="Foto" class="form-label">Foto</label>
+                            <input asp-for="Foto" class="form-control" required="">
+                            <span asp-validation-for="Foto" class="text-danger"></span>
+                        </div>
+                        <div class="col-12">
+                            <label asp-for="Alergias" class="form-label">Tiene Alergias</label>
+                        <div class="form-check">
+                                <input asp-for="Alergias" class="form-check-input @(Model.Alergias ? "is-valid" : "is-invalid")" type="radio" id="flexRadioDefault1" value="true">
+                            <label class="form-check-label" for="flexRadioDefault1">
+                                Si
+                            </label>
+                        </div>
+                            <div class="form-check">
+                                <input asp-for="Alergias" class="form-check-input @(Model.Alergias ? "is-valid" : "is-invalid")" type="radio" id="flexRadioDefault1" value="false">
+                                <label class="form-check-label" for="flexRadioDefault1">
+                                    No
+                                </label>
+                            </div>
+                            <span asp-validation-for="Alergias" class="text-danger"></span>
+                        </div>
+                        <div class="col-12">
+                            <label asp-for="Fuma" class="form-label">Fuma el Paciente</label>
+                            <div class="form-check">
+                                <input asp-for="Fuma" class="form-check-input @(Model.Fuma ? "is-valid" : "is-invalid")" type="radio" id="flexRadioDefault1" value="true">
+                                <label class="form-check-label" for="flexRadioDefault1">
+                                    Si
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input asp-for="Fuma" class="form-check-input @(Model.Fuma ? "is-valid" : "is-invalid")" type="radio" id="flexRadioDefault1" value="false">
+                                <label class="form-check-label" for="flexRadioDefault1">
+                                    No
+                                </label>
+                            </div>
+                            <span asp-validation-for="Fuma" class="text-danger"></span>
+                        </div>
+
+                        <hr class="my-4">
+
+                        <button class="w-100 btn btn-primary btn-lg" type="submit">Continue to checkout</button>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <footer class="my-5 pt-5 text-body-secondary text-center text-small">
+        <p class="mb-1">© 2017–2023 Company Name</p>
+        <ul class="list-inline">
+            <li class="list-inline-item"><a href="#">Privacy</a></li>
+            <li class="list-inline-item"><a href="#">Terms</a></li>
+            <li class="list-inline-item"><a href="#">Support</a></li>
+        </ul>
+    </footer>
+</div>

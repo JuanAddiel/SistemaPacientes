@@ -24,11 +24,10 @@ namespace SistemaPacientes.Infrastructure.Persistence.Repository
             return entity;
         }
 
-        public async Task<T> DeleteAsync(T entity)
+        public async Task DeleteAsync(T entity)
         {
-            await _context.Set<T>().FindAsync(entity);
             _context.Set<T>().Remove(entity);
-            return entity;
+            await _context.SaveChangesAsync();
         }
 
         public async Task<ICollection<T>> GetAllAsync()

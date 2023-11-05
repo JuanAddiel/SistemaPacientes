@@ -22,11 +22,15 @@
             <div class="h-100 bg-dark">
                 <div class="sidebar-logo">
                     <img class="bi mt-4 mb-3" src="~/image/Logo.png" width="50" height="50">
-                    <a asp-controller="Home" asp-action="Index" class="text-white fw-bold"><h5>Sistema de Hospital</h5></a>
+                    <a asp-controller="@(user!=null ? "Home" : "Usuario")" asp-action="Index" class="text-white fw-bold"><h5>Sistema de Hospital</h5></a>
 
 
                 </div>
-                <!-- Sidebar Navigation -->
+                @{
+                    var currentController = ViewContext.RouteData.Values["controller"] as string;
+                    var currentAction = ViewContext.RouteData.Values["action"] as string;
+                }
+                @if(user != null){
                 <ul class="sidebar-nav">
                     <li class="sidebar-item">
                         <a href="#" class="sidebar-link">
@@ -35,10 +39,17 @@
                         </a>
                     </li>
                     <li class="sidebar-item">
-                        <a asp-controller="Medico" asp-action="Index" class="sidebar-link">
+                            <a asp-controller="Medico" asp-action="Index" class="sidebar-link @(currentController == "Medico" && currentAction == "Index" ? "active" : "")">
                             <i class="fa-solid fa-user-doctor pe-2"></i>
                              Medicos
                         </a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a asp-controller="Paciente" asp-action="Index" class="sidebar-link @(currentController == "Medico" && currentAction == "Index" ? "active" : "")">
+                                <i class="fa-solid fa-user-doctor pe-2"></i>
+                                Paciente
+                            </a>
+                        </li>
 @*                         <ul id="pages" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
                             <li class="sidebar-item">
                                 <a href="#" class="sidebar-link">Analytics</a>
@@ -50,20 +61,14 @@
                                 <a href="#" class="sidebar-link">Crypto</a>
                             </li>
                         </ul> *@
-                    </li>
-                    <li class="sidebar-item">
-                        <a href="#" class="sidebar-link collapsed">
-                            <i class="fa-solid fa-user pe-2"></i>
-                            Pacientes
-                        </a>
-                    </li>
+
+
                 </ul>
+                }
             </div>
         </aside>
-        <!-- Main Component -->
         <div class="main">
             <nav class="navbar navbar-expand px-3 border-bottom bg-dark">
-                <!-- Button for sidebar toggle -->
                 <button class="btn" type="button" data-bs-theme="dark">
                     <span class="navbar-toggler-icon"></span>
                 </button>

@@ -14,7 +14,7 @@ namespace SistemaPacientes.Core.Domain.Entities
         public string Correo { get; set; }
         public string Telefono { get; set; }
         public string Cedula { get; set; }  
-        public string Foto { get; set; }
+        public string? Foto { get; set; }
         public ICollection<Cita> citas { get; set; }    
     }
 }
