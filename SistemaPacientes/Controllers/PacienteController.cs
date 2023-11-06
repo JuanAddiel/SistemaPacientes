@@ -43,7 +43,7 @@ namespace SistemaPacientes.WebApp.Controllers
             PacienteSaveViewModel Pacientevm = await _pacienteServices.AddAsync(vm);
             if(Pacientevm.Id != 0 && Pacientevm != null)
             {
-                Pacientevm.FotoUrl = UploadImg(vm.Foto, Pacientevm.Id);
+                Pacientevm.Foto = UploadFile(vm.File, Pacientevm.Id);
             }
             await _pacienteServices.UpdateAsync(Pacientevm);
             return RedirectToRoute(new { controller = "Paciente", action = "Index" });
@@ -69,7 +69,10 @@ namespace SistemaPacientes.WebApp.Controllers
             {
                 return View("SavePaciente", vm);
             }
-            await _pacienteServices.UpdateAsync(vm);
+            PacienteSaveViewModel pacienteVm = await _pacienteServices.GetByIdAsync(vm.Id);
+            pacienteVm.File = vm.File;
+            pacienteVm.Foto = UploadFile(pacienteVm.File, pacienteVm.Id, true, pacienteVm.Foto);
+            await _pacienteServices.UpdateAsync(pacienteVm);
             return RedirectToRoute(new { controller = "Paciente", action = "Index" });
         }
         public async Task<IActionResult> Delete (int id)
@@ -92,25 +95,48 @@ namespace SistemaPacientes.WebApp.Controllers
             return RedirectToRoute(new { controller = "Paciente", action = "Index" });
         }
 
-        private string UploadImg(IFormFile file, int id)
+        private string UploadFile(IFormFile file, int id, bool isEditMode = false, string imagePath = "")
         {
-            //Obtenemos el path de la carpeta
+            if (isEditMode)
+            {
+                if (file == null)
+                {
+                    return imagePath;
+                }
+            }
             string basePath = $"/Images/Pacientes/{id}";
             string path = Path.Combine(Directory.GetCurrentDirectory(), $"wwwroot{basePath}");
-            if(!Directory.Exists(path))
+
+            //create folder if not exist
+            if (!Directory.Exists(path))
             {
                 Directory.CreateDirectory(path);
             }
-            //Obtenemos el path del file
+
+            //get file extension
             Guid guid = Guid.NewGuid();
-            FileInfo fileInfo = new FileInfo(file.FileName);
-            string filename = fileInfo.Name + fileInfo.Extension;
-            string filenameWithPath = Path.Combine(path, filename);
-            using(var stream = new FileStream(filenameWithPath, FileMode.Create))
+            FileInfo fileInfo = new(file.FileName);
+            string fileName = guid + fileInfo.Extension;
+
+            string fileNameWithPath = Path.Combine(path, fileName);
+
+            using (var stream = new FileStream(fileNameWithPath, FileMode.Create))
             {
-                file.CopyToAsync(stream);
+                file.CopyTo(stream);
             }
-            return Path.Combine(basePath, filename);
+
+            if (isEditMode)
+            {
+                string[] oldImagePart = imagePath.Split("/");
+                string oldImagePath = oldImagePart[^1];
+                string completeImageOldPath = Path.Combine(path, oldImagePath);
+
+                if (System.IO.File.Exists(completeImageOldPath))
+                {
+                    System.IO.File.Delete(completeImageOldPath);
+                }
+            }
+            return $"{basePath}/{fileName}";
         }
     }
 }

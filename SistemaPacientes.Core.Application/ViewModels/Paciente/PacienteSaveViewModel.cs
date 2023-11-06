@@ -27,7 +27,7 @@ namespace SistemaPacientes.Core.Application.ViewModels.Paciente
         [Required(ErrorMessage = "Agregar su cedula")]
         public string Cedula { get; set; }
         [DataType(DataType.Upload)]
-        public IFormFile Foto { get; set; }
+        public IFormFile File { get; set; }
         [Required(ErrorMessage = "Agregar si tiene alergias")]
         public bool Alergias { get; set; }
         [Required(ErrorMessage = "Agregar si fuma")]
@@ -35,6 +35,6 @@ namespace SistemaPacientes.Core.Application.ViewModels.Paciente
         [DataType(DataType.Date)]
         [Required(ErrorMessage = "Agregar su fecha de nacimiento")]
         public DateTime FechaNacimiento { get; set; }
-        public string? FotoUrl { get; set; }
+        public string? Foto { get; set; }
     }
 }

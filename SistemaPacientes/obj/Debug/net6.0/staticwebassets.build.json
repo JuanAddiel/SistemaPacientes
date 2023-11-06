@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "PZmlh8NdIeOVhUoHbx5NX7ZKOzKgTvcrJ+mdnBQo0Q8=",
+  "Hash": "pZWrjWkjrEyzUuMAYd6Nig/aARH9fwcir4uF3xo+FWc=",
   "Source": "SistemaPacientes.WebApp",
   "BasePath": "_content/SistemaPacientes.WebApp",
   "Mode": "Default",
@@ -36040,12 +36040,12 @@
       "OriginalItemSpec": "wwwroot\\image\\Logo.png"
     },
     {
-      "Identity": "C:\\Users\\addie\\OneDrive\\Desktop\\Proyect\\SistemaPacientes\\SistemaPacientes\\wwwroot\\Images\\Products\\10\\654f3421-088a-42a4-8cc6-c70547157598.JPG",
+      "Identity": "C:\\Users\\addie\\OneDrive\\Desktop\\Proyect\\SistemaPacientes\\SistemaPacientes\\wwwroot\\Images\\Pacientes\\6\\c20df786-9bc5-46f8-80c1-bdb679c0f32c.JPG",
       "SourceId": "SistemaPacientes.WebApp",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\addie\\OneDrive\\Desktop\\Proyect\\SistemaPacientes\\SistemaPacientes\\wwwroot\\",
       "BasePath": "_content/SistemaPacientes.WebApp",
-      "RelativePath": "Images/Products/10/654f3421-088a-42a4-8cc6-c70547157598.JPG",
+      "RelativePath": "Images/Pacientes/6/c20df786-9bc5-46f8-80c1-bdb679c0f32c.JPG",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -36054,15 +36054,15 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\Images\\Products\\10\\654f3421-088a-42a4-8cc6-c70547157598.JPG"
+      "OriginalItemSpec": "wwwroot\\Images\\Pacientes\\6\\c20df786-9bc5-46f8-80c1-bdb679c0f32c.JPG"
     },
     {
-      "Identity": "C:\\Users\\addie\\OneDrive\\Desktop\\Proyect\\SistemaPacientes\\SistemaPacientes\\wwwroot\\Images\\Products\\11\\f67fd719-770a-4a32-b7d6-29ff874b83b2.JPG",
+      "Identity": "C:\\Users\\addie\\OneDrive\\Desktop\\Proyect\\SistemaPacientes\\SistemaPacientes\\wwwroot\\Images\\Products\\16\\c0710e5c-960a-4002-bf22-5c468dd27a21.png",
       "SourceId": "SistemaPacientes.WebApp",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\addie\\OneDrive\\Desktop\\Proyect\\SistemaPacientes\\SistemaPacientes\\wwwroot\\",
       "BasePath": "_content/SistemaPacientes.WebApp",
-      "RelativePath": "Images/Products/11/f67fd719-770a-4a32-b7d6-29ff874b83b2.JPG",
+      "RelativePath": "Images/Products/16/c0710e5c-960a-4002-bf22-5c468dd27a21.png",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -36071,15 +36071,15 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\Images\\Products\\11\\f67fd719-770a-4a32-b7d6-29ff874b83b2.JPG"
+      "OriginalItemSpec": "wwwroot\\Images\\Products\\16\\c0710e5c-960a-4002-bf22-5c468dd27a21.png"
     },
     {
-      "Identity": "C:\\Users\\addie\\OneDrive\\Desktop\\Proyect\\SistemaPacientes\\SistemaPacientes\\wwwroot\\Images\\Products\\12\\42f9639b-c582-4d30-b5ec-9f03a50d7d3b.JPG",
+      "Identity": "C:\\Users\\addie\\OneDrive\\Desktop\\Proyect\\SistemaPacientes\\SistemaPacientes\\wwwroot\\Images\\Products\\17\\5072dec0-ac50-48e4-b711-1aea48ecd81d.png",
       "SourceId": "SistemaPacientes.WebApp",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\addie\\OneDrive\\Desktop\\Proyect\\SistemaPacientes\\SistemaPacientes\\wwwroot\\",
       "BasePath": "_content/SistemaPacientes.WebApp",
-      "RelativePath": "Images/Products/12/42f9639b-c582-4d30-b5ec-9f03a50d7d3b.JPG",
+      "RelativePath": "Images/Products/17/5072dec0-ac50-48e4-b711-1aea48ecd81d.png",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -36088,15 +36088,15 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\Images\\Products\\12\\42f9639b-c582-4d30-b5ec-9f03a50d7d3b.JPG"
+      "OriginalItemSpec": "wwwroot\\Images\\Products\\17\\5072dec0-ac50-48e4-b711-1aea48ecd81d.png"
     },
     {
-      "Identity": "C:\\Users\\addie\\OneDrive\\Desktop\\Proyect\\SistemaPacientes\\SistemaPacientes\\wwwroot\\Images\\Products\\13\\295a770f-e64b-495c-90f1-aa3f7fb0c6ba.jpg",
+      "Identity": "C:\\Users\\addie\\OneDrive\\Desktop\\Proyect\\SistemaPacientes\\SistemaPacientes\\wwwroot\\Images\\Products\\18\\ae44b681-910a-4763-a59f-a289a0938179.png",
       "SourceId": "SistemaPacientes.WebApp",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\addie\\OneDrive\\Desktop\\Proyect\\SistemaPacientes\\SistemaPacientes\\wwwroot\\",
       "BasePath": "_content/SistemaPacientes.WebApp",
-      "RelativePath": "Images/Products/13/295a770f-e64b-495c-90f1-aa3f7fb0c6ba.jpg",
+      "RelativePath": "Images/Products/18/ae44b681-910a-4763-a59f-a289a0938179.png",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -36105,15 +36105,15 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\Images\\Products\\13\\295a770f-e64b-495c-90f1-aa3f7fb0c6ba.jpg"
+      "OriginalItemSpec": "wwwroot\\Images\\Products\\18\\ae44b681-910a-4763-a59f-a289a0938179.png"
     },
     {
-      "Identity": "C:\\Users\\addie\\OneDrive\\Desktop\\Proyect\\SistemaPacientes\\SistemaPacientes\\wwwroot\\Images\\Products\\5\\73ea0fe1-02b1-4e02-aede-040e28a483ea.JPG",
+      "Identity": "C:\\Users\\addie\\OneDrive\\Desktop\\Proyect\\SistemaPacientes\\SistemaPacientes\\wwwroot\\Images\\Products\\19\\197c4dc5-fee7-436f-815f-44745cbf02b0.jpg",
       "SourceId": "SistemaPacientes.WebApp",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\addie\\OneDrive\\Desktop\\Proyect\\SistemaPacientes\\SistemaPacientes\\wwwroot\\",
       "BasePath": "_content/SistemaPacientes.WebApp",
-      "RelativePath": "Images/Products/5/73ea0fe1-02b1-4e02-aede-040e28a483ea.JPG",
+      "RelativePath": "Images/Products/19/197c4dc5-fee7-436f-815f-44745cbf02b0.jpg",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -36122,15 +36122,15 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\Images\\Products\\5\\73ea0fe1-02b1-4e02-aede-040e28a483ea.JPG"
+      "OriginalItemSpec": "wwwroot\\Images\\Products\\19\\197c4dc5-fee7-436f-815f-44745cbf02b0.jpg"
     },
     {
-      "Identity": "C:\\Users\\addie\\OneDrive\\Desktop\\Proyect\\SistemaPacientes\\SistemaPacientes\\wwwroot\\Images\\Products\\6\\d38c94b5-1381-4ff5-9af6-5da33585a19a.JPG",
+      "Identity": "C:\\Users\\addie\\OneDrive\\Desktop\\Proyect\\SistemaPacientes\\SistemaPacientes\\wwwroot\\Images\\Products\\19\\c5ea2d25-ec31-4fd9-9f84-661536987ebf.jpg",
       "SourceId": "SistemaPacientes.WebApp",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\addie\\OneDrive\\Desktop\\Proyect\\SistemaPacientes\\SistemaPacientes\\wwwroot\\",
       "BasePath": "_content/SistemaPacientes.WebApp",
-      "RelativePath": "Images/Products/6/d38c94b5-1381-4ff5-9af6-5da33585a19a.JPG",
+      "RelativePath": "Images/Products/19/c5ea2d25-ec31-4fd9-9f84-661536987ebf.jpg",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -36139,58 +36139,7 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\Images\\Products\\6\\d38c94b5-1381-4ff5-9af6-5da33585a19a.JPG"
-    },
-    {
-      "Identity": "C:\\Users\\addie\\OneDrive\\Desktop\\Proyect\\SistemaPacientes\\SistemaPacientes\\wwwroot\\Images\\Products\\7\\061ae5fd-1018-45bd-ac3e-a7b1273af418.jpg",
-      "SourceId": "SistemaPacientes.WebApp",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\addie\\OneDrive\\Desktop\\Proyect\\SistemaPacientes\\SistemaPacientes\\wwwroot\\",
-      "BasePath": "_content/SistemaPacientes.WebApp",
-      "RelativePath": "Images/Products/7/061ae5fd-1018-45bd-ac3e-a7b1273af418.jpg",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\Images\\Products\\7\\061ae5fd-1018-45bd-ac3e-a7b1273af418.jpg"
-    },
-    {
-      "Identity": "C:\\Users\\addie\\OneDrive\\Desktop\\Proyect\\SistemaPacientes\\SistemaPacientes\\wwwroot\\Images\\Products\\8\\316029da-2576-4ec1-a34e-6c4d4a96f0f4.JPG",
-      "SourceId": "SistemaPacientes.WebApp",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\addie\\OneDrive\\Desktop\\Proyect\\SistemaPacientes\\SistemaPacientes\\wwwroot\\",
-      "BasePath": "_content/SistemaPacientes.WebApp",
-      "RelativePath": "Images/Products/8/316029da-2576-4ec1-a34e-6c4d4a96f0f4.JPG",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\Images\\Products\\8\\316029da-2576-4ec1-a34e-6c4d4a96f0f4.JPG"
-    },
-    {
-      "Identity": "C:\\Users\\addie\\OneDrive\\Desktop\\Proyect\\SistemaPacientes\\SistemaPacientes\\wwwroot\\Images\\Products\\9\\8b6fa5da-ee4b-4e92-b571-8037dd57e9ef.jpg",
-      "SourceId": "SistemaPacientes.WebApp",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\addie\\OneDrive\\Desktop\\Proyect\\SistemaPacientes\\SistemaPacientes\\wwwroot\\",
-      "BasePath": "_content/SistemaPacientes.WebApp",
-      "RelativePath": "Images/Products/9/8b6fa5da-ee4b-4e92-b571-8037dd57e9ef.jpg",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\Images\\Products\\9\\8b6fa5da-ee4b-4e92-b571-8037dd57e9ef.jpg"
+      "OriginalItemSpec": "wwwroot\\Images\\Products\\19\\c5ea2d25-ec31-4fd9-9f84-661536987ebf.jpg"
     },
     {
       "Identity": "C:\\Users\\addie\\OneDrive\\Desktop\\Proyect\\SistemaPacientes\\SistemaPacientes\\wwwroot\\js\\site.js",

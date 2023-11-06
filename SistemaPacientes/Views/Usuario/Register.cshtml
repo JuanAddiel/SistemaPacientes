@@ -1,13 +1,14 @@
 ﻿﻿@using SistemaPacientes.Core.Application.ViewModels.User;
 @model UserSaveViewModel;
 @{
-    ViewData["Title"] = "Registrarme";
+    bool editMode = Model.Id == 0 ? false : true;
+    ViewData["Title"] = editMode ? "Editar Usuario" : "Crear Usuario";
 }
 @if (Model.Roles == null || Model.Roles.Count == 0)
 {
     <div class="alert alert-warning">
         <p>No hay roles creadas</p>
-        <a asp-controller="Usuario" asp-action="Index" class="btn btn-primary">Volver atras</a>
+        <a asp-controller="Usuario" asp-action="GetAll" class="btn btn-primary">Volver atras</a>
     </div>
 }
 <section class=" vh-100">
@@ -26,7 +27,7 @@
             </div>
             <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
 
-                <form method="post" asp-controller="Usuario" asp-action="Register">
+                <form method="post" asp-controller="Usuario" asp-action="@(editMode ? "Edit" : "Register")">
                     <div class="row mb-4">
                         <div class="col">
                             <div class="form-outline mb-3">
@@ -73,16 +74,21 @@
                             </div>
                         </div>
                     </div>
-
                     <div class="text-center text-lg-start mt-4 pt-2">
-                        <button class="btn btn-primary btn-lg"
-                                style="padding-left: 2.5rem; padding-right: 2.5rem;">
-                            Register
-                        </button>
-                        <p class="small fw-bold mt-2 pt-1 mb-0">
-                            I have an account <a asp-controller="Usuario" asp-action="Index" class="link-danger">Login</a>
-                        </p>
+                        <div style="display: flex; justify-content: space-between;">
+                            <button type="submit" class="btn btn-primary btn-lg"
+                                    style="padding-left: 2.5rem; padding-right: 2.5rem;">
+                                Register
+                            </button>
+                            <a asp-controller="Usuario" asp-action="GetAll" class="btn btn-danger btn-lg"
+                               style="padding-left: 2.5rem; padding-right: 2.5rem;">
+                                Atras
+                            </a>
+                        </div>
                     </div>
++
+
+
 
 
                 </form>

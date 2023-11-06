@@ -27,7 +27,7 @@ namespace SistemaPacientes.Core.Application.Services
             paciente.Direccion = saveViewModel.Direccion;
             paciente.Telefono = saveViewModel.Telefono;
             paciente.Cedula = saveViewModel.Cedula;
-            paciente.Foto = saveViewModel.FotoUrl;
+            paciente.Foto = saveViewModel.Foto;
             paciente.Alergias = saveViewModel.Alergias;
             paciente.Fuma = saveViewModel.Fuma;
             paciente.FechaNacimiento = saveViewModel.FechaNacimiento;
@@ -41,10 +41,11 @@ namespace SistemaPacientes.Core.Application.Services
             pacienteVm.Direccion = paciente.Direccion;
             pacienteVm.Telefono = paciente.Telefono;
             pacienteVm.Cedula = paciente.Cedula;
-            pacienteVm.FotoUrl = paciente.Foto;
+            pacienteVm.Foto = paciente.Foto;
             pacienteVm.Alergias = paciente.Alergias;
             pacienteVm.Fuma = paciente.Fuma;
             pacienteVm.FechaNacimiento = paciente.FechaNacimiento;
+            pacienteVm.File = saveViewModel.File;
 
             return pacienteVm;
 
@@ -86,7 +87,7 @@ namespace SistemaPacientes.Core.Application.Services
             pacienteVm.Direccion = paciente.Direccion;
             pacienteVm.Telefono = paciente.Telefono;
             pacienteVm.Cedula = paciente.Cedula;
-            pacienteVm.FotoUrl = paciente.Foto;
+            pacienteVm.Foto = paciente.Foto;
             pacienteVm.Alergias = paciente.Alergias;
             pacienteVm.Fuma = paciente.Fuma;
             pacienteVm.FechaNacimiento = paciente.FechaNacimiento;
@@ -102,7 +103,7 @@ namespace SistemaPacientes.Core.Application.Services
             paciente.Direccion = saveViewModel.Direccion;
             paciente.Telefono = saveViewModel.Telefono;
             paciente.Cedula = saveViewModel.Cedula;
-            paciente.Foto = saveViewModel.FotoUrl;
+            paciente.Foto = saveViewModel.Foto;
             paciente.Alergias = saveViewModel.Alergias;
             paciente.Fuma = saveViewModel.Fuma;
             paciente.FechaNacimiento = saveViewModel.FechaNacimiento;

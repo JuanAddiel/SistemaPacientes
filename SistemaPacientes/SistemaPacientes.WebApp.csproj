@@ -18,4 +18,8 @@
     <ProjectReference Include="..\SistemaPacientes.Core.Application\SistemaPacientes.Core.Application.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\Images\Products\" />
+  </ItemGroup>
+
 </Project>

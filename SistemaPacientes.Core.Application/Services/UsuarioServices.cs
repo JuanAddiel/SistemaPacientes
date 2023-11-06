@@ -1,5 +1,6 @@
 ﻿using SistemaPacientes.Core.Application.Interfaces.Repositories;
 using SistemaPacientes.Core.Application.Interfaces.Services;
+using SistemaPacientes.Core.Application.ViewModels.Paciente;
 using SistemaPacientes.Core.Application.ViewModels.User;
 using SistemaPacientes.Core.Domain.Entities;
 using System;
@@ -62,9 +63,19 @@ namespace SistemaPacientes.Core.Application.Services
             await _usuarioRepository.DeleteAsync(usuario);
         }
 
-        public Task<ICollection<UserViewModel>> GetAllAsync()
+        public async Task<ICollection<UserViewModel>> GetAllAsync()
         {
-            throw new NotImplementedException();
+            var usuarios = await _usuarioRepository.GetAllAsyncInclude(new List<string> { "Role" });
+            return usuarios.Select(user => new UserViewModel
+            {
+                Id = user.Id,
+                Nombre = user.Nombre,
+                UserName = user.UserName,
+                Phone = user.Phone,
+                Email = user.Email,
+                RoleName = user.Role.Name,
+
+            }).ToList();
         }
 
         public async Task<UserSaveViewModel> GetByIdAsync(int id)
@@ -77,6 +88,7 @@ namespace SistemaPacientes.Core.Application.Services
             saveViewModel.Phone = usuario.Phone;
             saveViewModel.UserName = usuario.UserName;
             saveViewModel.Password = usuario.Password;
+            saveViewModel.ConfirmPassword = usuario.Password;
             saveViewModel.RoleId = usuario.RoleId;
             return saveViewModel;   
         }

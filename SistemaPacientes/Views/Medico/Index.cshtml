@@ -2,7 +2,6 @@
 @model ICollection<MedicoViewModel>
 @{
     ViewData["Title"] = "Mantenimiento Medicos";
-    int id;
 }
 
 <div class="container my-2">
@@ -24,48 +23,23 @@
 </div>
 @foreach (var item in Model)
 {
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-4 d-flex flex-column align-items-center text-center">
-                <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder" preserveAspectRatio="xMidYMid slice" focusable="false">
-                    <title></title>
-                    <img width="100" height="100" x="20" y="20" src="@item.Foto" />
-                </svg>
-                <h2 class="fw-normal">@item.Nombre @item.Apellido</h2>
-                <p></p>
-                <p><a class="btn btn-secondary" asp-controller="Medico" asp-action="Detalle">Ver detalles »</a></p>
-
-@*                 Ver porque no me esta mandando el id Seleccionado *@
-               @*  @(id = item.Id)
-                <button type="button" asp-route-id="@item.Id" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                    Delete
-
-                </button>
-                @if (item.Id == id)
-                {
-                <form class="needs-validation" asp-controller="Medico" asp-action="DeletePost" asp-route-id="@id" >
-
- 
-                        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                            <div class="modal-dialog">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h1 class="modal-title fs-5" id="exampleModalLabel">@item.Nombre</h1>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                    </div>
-                                    <div class="modal-body">
-                                        ¿Estás seguro de que deseas eliminar al médico?
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                        <button type="submit" class="btn btn-primary">Save changes</button>
-                                    </div>
-                                </div>
-                            </div>
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+        <div class="col">
+            <div class="card shadow-sm">
+                <img src="@item.Foto" class="card-img-top" alt="@item.Nombre" />
+                <div class="card-body">
+                    <h5 class="card-title">@item.Nombre @item.Apellido</h5>
+                    <p class="card-text">Telefono: @item.Telefono</p>
+                    <p class="card-text">Correo: @item.Correo</p>
+                    <p class="card-text">Cedula: @item.Cedula</p>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div class="btn-group">
+                            <a class="btn btn-sm btn-outline-warning" asp-controller="Medico" asp-action="Edit" asp-route-id="@item.Id">Editar</a>
+                            <a asp-controller="Medico" asp-action="Delete" asp-route-id="@item.Id" class="btn btn-sm btn-outline-danger">Delete</a>
                         </div>
-
-                </form>
-                } *@
+                        <small class="text-body-secondary">9 mins</small>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

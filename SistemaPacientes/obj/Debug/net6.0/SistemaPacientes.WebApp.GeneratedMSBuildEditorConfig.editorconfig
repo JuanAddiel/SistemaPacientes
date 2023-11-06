@@ -48,12 +48,32 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGFjaWVudGVcU2F2ZVBhY2llbnRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/addie/OneDrive/Desktop/Proyect/SistemaPacientes/SistemaPacientes/Views/Prueba/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJ1ZWJhXERlbGV0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/addie/OneDrive/Desktop/Proyect/SistemaPacientes/SistemaPacientes/Views/Prueba/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJ1ZWJhXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/addie/OneDrive/Desktop/Proyect/SistemaPacientes/SistemaPacientes/Views/Prueba/SavePrueba.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJ1ZWJhXFNhdmVQcnVlYmEuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/addie/OneDrive/Desktop/Proyect/SistemaPacientes/SistemaPacientes/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/addie/OneDrive/Desktop/Proyect/SistemaPacientes/SistemaPacientes/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/addie/OneDrive/Desktop/Proyect/SistemaPacientes/SistemaPacientes/Views/Usuario/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXN1YXJpb1xEZWxldGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/addie/OneDrive/Desktop/Proyect/SistemaPacientes/SistemaPacientes/Views/Usuario/GetAll.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXN1YXJpb1xHZXRBbGwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/addie/OneDrive/Desktop/Proyect/SistemaPacientes/SistemaPacientes/Views/Usuario/Index.cshtml]

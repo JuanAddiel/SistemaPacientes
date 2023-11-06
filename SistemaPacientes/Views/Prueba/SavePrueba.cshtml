@@ -1,0 +1,41 @@
+﻿@using SistemaPacientes.Core.Application.ViewModels.PruebaLaboratorio;
+@model PruebaLaboratorioSaveViewModel;
+@{
+    bool editMode = Model.Id == 0 ? false : true;
+    ViewData["Title"] = editMode ? "Edit Prueba" : "Add Prueba";
+}
+
+<div class="container">
+    <main>
+        <div class="py-5 text-center">
+            <img class="d-block mx-auto mb-4" src="~/image/Logo.png" alt="" width="72" height="72">
+            <h2>Creando Medico</h2>
+            <p class="lead">Below is an example form built entirely with Bootstrap’s form controls. Each required form group has a validation state that can be triggered by attempting to submit the form without completing it.</p>
+        </div>
+
+        <div class="row g-5">
+            <div class="col-md-5 col-lg-4 order-md-last">
+
+                <img src="~/image/Logo.png" class="rounded mx-auto d-block" alt="...">
+            </div>
+            <div class="col-md-7 col-lg-8">
+                <h4 class="mb-3">Billing address</h4>
+                <form class="needs-validation" asp-controller="Prueba" asp-action="@(editMode ? "Edit" : "Create")" novalidate="">
+                    <div class="row g-3">
+                        <div class="col-sm-6">
+                            <label asp-for="Nombre" class="form-label">Nombre</label>
+                            <input class="form-control" asp-for="Nombre" placeholder="">
+                            <span asp-validation-for="Nombre" class="text-danger"></span>
+
+                        </div>
+
+                        </div>
+                        <hr class="my-4">
+
+                    <button class="w-40 btn btn-primary btn-lg" type="submit">@(editMode ? "Editar Prueba" : "Crear Prueba")</button>
+                    <a class="w-25 btn btn-danger btn-lg" asp-controller="Prueba" asp-action="Index">Volver</a>
+                </form>
+            </div>
+        </div>
+    </main>
+</div>

@@ -17,7 +17,6 @@
 </head>
 <body>
     <div class="wrapper">
-        <!-- Sidebar -->
         <aside id="sidebar">
             <div class="h-100 bg-dark">
                 <div class="sidebar-logo">
@@ -30,8 +29,9 @@
                     var currentController = ViewContext.RouteData.Values["controller"] as string;
                     var currentAction = ViewContext.RouteData.Values["action"] as string;
                 }
-                @if(user != null){
                 <ul class="sidebar-nav">
+                @if(user != null){
+
                     <li class="sidebar-item">
                         <a href="#" class="sidebar-link">
                             <i class="fa-solid fa-house pe-2"></i>
@@ -45,26 +45,33 @@
                         </a>
                         </li>
                         <li class="sidebar-item">
-                            <a asp-controller="Paciente" asp-action="Index" class="sidebar-link @(currentController == "Medico" && currentAction == "Index" ? "active" : "")">
+                            <a asp-controller="Paciente" asp-action="Index" class="sidebar-link @(currentController == "Paciente" && currentAction == "Index" ? "active" : "")">
                                 <i class="fa-solid fa-user-doctor pe-2"></i>
                                 Paciente
                             </a>
                         </li>
-@*                         <ul id="pages" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
-                            <li class="sidebar-item">
-                                <a href="#" class="sidebar-link">Analytics</a>
-                            </li>
-                            <li class="sidebar-item">
-                                <a href="#" class="sidebar-link">Ecommerce</a>
-                            </li>
-                            <li class="sidebar-item">
-                                <a href="#" class="sidebar-link">Crypto</a>
-                            </li>
-                        </ul> *@
+                        <li class="sidebar-item">
+                            <a asp-controller="Prueba" asp-action="Index" class="sidebar-link @(currentController == "Prueba" && currentAction == "Index" ? "active" : "")">
+                                <i class="fa-solid fa-user-doctor pe-2"></i>
+                                Prueba Laboratorio
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a asp-controller="Usuario" asp-action="GetAll" class="sidebar-link @(currentController == "Usuario" && currentAction == "Index" ? "active" : "")">
+                                <i class="fa-solid fa-user-doctor pe-2"></i>
+                                Usuarios
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a asp-controller="Usuario" asp-action="Logout" class="sidebar-link @(currentController == "Usuario" && currentAction == "Index" ? "active" : "")">
+                                Cerrar Seccion
+                            </a>
+                        </li>
 
 
-                </ul>
                 }
+                
+                    </ul>
             </div>
         </aside>
         <div class="main">
@@ -73,10 +80,11 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
             </nav>
+
             <main class="content px-3 py-2">
                 <div class="container-fluid">
                     <div class="mb-3">
-                        @RenderBody();
+                        @RenderBody()
                     </div>
                 </div>
             </main>

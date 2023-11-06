@@ -21,6 +21,10 @@ namespace SistemaPacientes.WebApp.Controllers
             {
                 return RedirectToRoute(new { controller = "Usuario", action = "Index" });
             }
+            if(!_validateSession.HasAdmin())
+            {
+                return RedirectToRoute(new { controller = "Home", action = "Index" });
+            }
             return View(await _medicoServices.GetAllAsync());
         }
         public async Task<IActionResult> Create()
@@ -28,6 +32,10 @@ namespace SistemaPacientes.WebApp.Controllers
             if (!_validateSession.HasUser())
             {
                 return RedirectToRoute(new { controller = "Usuario", action = "Index" });
+            }
+            if (!_validateSession.HasAdmin())
+            {
+                return RedirectToRoute(new { controller = "Home", action = "Index" });
             }
             MedicoSaveViewModel vm = new();
             return View("SaveMedico", vm);
@@ -38,6 +46,10 @@ namespace SistemaPacientes.WebApp.Controllers
             if (!_validateSession.HasUser())
             {
                 return RedirectToRoute(new { controller = "Usuario", action = "Index" });
+            }
+            if (!_validateSession.HasAdmin())
+            {
+                return RedirectToRoute(new { controller = "Home", action = "Index" });
             }
             if (!ModelState.IsValid)
             {
@@ -57,6 +69,10 @@ namespace SistemaPacientes.WebApp.Controllers
             {
                 return RedirectToRoute(new { controller = "Usuario", action = "Index" });
             }
+            if (!_validateSession.HasAdmin())
+            {
+                return RedirectToRoute(new { controller = "Home", action = "Index" });
+            }
             MedicoSaveViewModel vm = await _medicoServices.GetByIdAsync(id);
             return View("SaveMedico", vm);
         }
@@ -67,29 +83,44 @@ namespace SistemaPacientes.WebApp.Controllers
             {
                 return RedirectToRoute(new { controller = "Usuario", action = "Index" });
             }
-            if(!ModelState.IsValid)
+            if (!_validateSession.HasAdmin())
+            {
+                return RedirectToRoute(new { controller = "Home", action = "Index" });
+            }
+            if (!ModelState.IsValid)
             {
                 return View("SaveMedico", vm);
             }
-            await _medicoServices.UpdateAsync(vm);
+            MedicoSaveViewModel viewModel = await _medicoServices.GetByIdAsync(vm.Id);
+            viewModel.File = vm.File;
+            viewModel.Foto = UploadFile(viewModel.File, viewModel.Id, true, viewModel.Foto);
+            await _medicoServices.UpdateAsync(viewModel);
             return RedirectToRoute(new { controller = "Medico", action = "Index" });
 
         }
-        public async Task<IActionResult> Delete (int id)
+        public async Task<IActionResult> Delete(int id)
         {
             if (!_validateSession.HasUser())
             {
                 return RedirectToRoute(new { controller = "Usuario", action = "Index" });
             }
-
-            return View("Delete", _medicoServices.DeleteAsync(id));
+            if (!_validateSession.HasAdmin())
+            {
+                return RedirectToRoute(new { controller = "Home", action = "Index" });
+            }
+            return View("Delete", await _medicoServices.GetByIdAsync(id));
         }
+
         [HttpPost]
         public async Task<IActionResult> DeletePost (int id)
         {
             if (!_validateSession.HasUser())
             {
                 return RedirectToRoute(new { controller = "Usuario", action = "Index" });
+            }
+            if (!_validateSession.HasAdmin())
+            {
+                return RedirectToRoute(new { controller = "Home", action = "Index" });
             }
             await _medicoServices.DeleteAsync(id);
             return RedirectToRoute(new { controller = "Medico", action = "Index" });
@@ -103,7 +134,7 @@ namespace SistemaPacientes.WebApp.Controllers
                     return imagePath;
                 }
             }
-            string basePath = $"/Images/Products/{id}";
+            string basePath = $"/Images/Medicos/{id}";
             string path = Path.Combine(Directory.GetCurrentDirectory(), $"wwwroot{basePath}");
 
             //create folder if not exist
