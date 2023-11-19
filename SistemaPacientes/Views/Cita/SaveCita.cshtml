@@ -1,0 +1,67 @@
+﻿@using SistemaPacientes.Core.Application.ViewModels.Cita;
+@model CitaSaveViewModel;
+@{
+    bool editMode = Model.Id == 0 ? false : true;
+    ViewData["Title"] = editMode ? "Edit Cita" : "Add Cita";
+}
+
+<div class="container">
+    <main>
+        <div class="py-5 text-center">
+            <img class="d-block mx-auto mb-4" src="~/image/Logo.png" alt="" width="72" height="72">
+            <h2>Creando Cita</h2>
+            <p class="lead">Below is an example form built entirely with Bootstrap’s form controls. Each required form group has a validation state that can be triggered by attempting to submit the form without completing it.</p>
+        </div>
+
+        <div class="row g-5">
+            <div class="col-md-5 col-lg-4 order-md-last">
+                @Html.ValidationSummary(false, "", new { @class = "text-danger" })
+                <img src="~/image/Logo.png" class="rounded mx-auto d-block" alt="...">
+            </div>
+            <div class="col-md-7 col-lg-8">
+                <h4 class="mb-3">Billing address</h4>
+                <form class="needs-validation" asp-controller="Cita" asp-action="@(editMode ? "Edit" : "Create")" novalidate="">
+
+                    <div class="col-sm-6">
+                        <select asp-for="IdPaciente" asp-items="@(new SelectList(Model.pacientes,"Id", "Nombre"))" class="form-control form-control-lg">
+                            <option value="0">-- Select a paciente --</option>
+                        </select>
+                        <span asp-validation-for="IdPaciente" class="text-danger"></span>
+                        </div>
+
+                        <div class="col-sm-6">
+                        <select asp-for="IdMedico" asp-items="@(new SelectList(Model.medicos,"Id", "Nombre"))" class="form-control form-control-lg">
+                            <option value="0">-- Select a medicos --</option>
+                        </select>
+                        <span asp-validation-for="IdMedico" class="text-danger"></span>
+                        </div>
+
+                        <div class="col-sm-6">
+                            <label asp-for="FechaCita" class="form-label">Fecha Cita</label>
+                            <input class="form-control @(string.IsNullOrWhiteSpace(Model.FechaCita) ? "is-invalid" : "is-valid" )" asp-for="FechaCita" placeholder="">
+                            <span asp-validation-for="FechaCita" class="text-danger"></span>
+
+                        </div>
+
+                        <div class="col-12">
+                            <label asp-for="HoraCita" class="form-label">Hora Cita</label>
+                            <input class="form-control @(string.IsNullOrWhiteSpace(Model.HoraCita) ? "is-invalid" : "is-valid" )" asp-for="HoraCita">
+                            <span asp-validation-for="HoraCita" class="text-danger"></span>
+                        </div>
+
+                    <div class="col-sm-6">
+                        <label asp-for="MotivoCita" class="form-label">Motivo Cita</label>
+                        <textarea class="form-control @(string.IsNullOrWhiteSpace(Model.MotivoCita) ? "is-invalid" : "is-valid" )" asp-for="MotivoCita" placeholder=""></textarea>
+                        <span asp-validation-for="MotivoCita" class="text-danger"></span>
+
+                    </div>
+                        <hr class="my-4">
+
+                        <button class="w-40 btn btn-primary btn-lg" type="submit">@(editMode ? "Editar Cita" : "Crear Cita")</button>
+                        <button class="w-40 btn btn-danger btn-lg" asp-controller="Cita" asp-action="Index">Volver</button>
+
+                </form>
+            </div>
+        </div>
+    </main>
+</div>

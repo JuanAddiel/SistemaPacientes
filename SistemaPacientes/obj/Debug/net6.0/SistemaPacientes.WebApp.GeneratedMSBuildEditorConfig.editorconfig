@@ -16,6 +16,18 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = C:\Users\addie\OneDrive\Desktop\Proyect\SistemaPacientes\SistemaPacientes
 build_property._RazorSourceGeneratorDebug = 
 
+[C:/Users/addie/OneDrive/Desktop/Proyect/SistemaPacientes/SistemaPacientes/Views/Cita/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2l0YVxEZWxldGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/addie/OneDrive/Desktop/Proyect/SistemaPacientes/SistemaPacientes/Views/Cita/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2l0YVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/addie/OneDrive/Desktop/Proyect/SistemaPacientes/SistemaPacientes/Views/Cita/SaveCita.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2l0YVxTYXZlQ2l0YS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/addie/OneDrive/Desktop/Proyect/SistemaPacientes/SistemaPacientes/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
@@ -58,6 +70,18 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/addie/OneDrive/Desktop/Proyect/SistemaPacientes/SistemaPacientes/Views/Prueba/SavePrueba.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJ1ZWJhXFNhdmVQcnVlYmEuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/addie/OneDrive/Desktop/Proyect/SistemaPacientes/SistemaPacientes/Views/Resultado/GetCitasP.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVzdWx0YWRvXEdldENpdGFzUC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/addie/OneDrive/Desktop/Proyect/SistemaPacientes/SistemaPacientes/Views/Resultado/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVzdWx0YWRvXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/addie/OneDrive/Desktop/Proyect/SistemaPacientes/SistemaPacientes/Views/Resultado/SaveResultado.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVzdWx0YWRvXFNhdmVSZXN1bHRhZG8uY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/addie/OneDrive/Desktop/Proyect/SistemaPacientes/SistemaPacientes/Views/Shared/Error.cshtml]

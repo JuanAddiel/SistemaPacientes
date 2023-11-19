@@ -1,0 +1,60 @@
+﻿@using SistemaPacientes.Core.Application.ViewModels.ResultadoLaboratorio;
+@model ResultadoLaboratorioSaveViewModel;
+@{
+    bool editMode = Model.Id == 0 ? false : true;
+    ViewData["Title"] = editMode ? "Edit Resultado" : "Add Resultado";
+}
+
+<div class="container">
+    <main>
+        <div class="py-5 text-center">
+            <img class="d-block mx-auto mb-4" src="~/image/Logo.png" alt="" width="72" height="72">
+            <h2>Creando Medico</h2>
+            <p class="lead">Below is an example form built entirely with Bootstrap’s form controls. Each required form group has a validation state that can be triggered by attempting to submit the form without completing it.</p>
+        </div>
+
+        <div class="row g-5">
+            @Html.ValidationSummary(false, "", new { @class = "text-danger" })
+
+            <div class="col-md-5 col-lg-4 order-md-last">
+
+                <img src="~/image/Logo.png" class="rounded mx-auto d-block" alt="...">
+            </div>
+            <div class="col-md-7 col-lg-8">
+                <h4 class="mb-3">Billing address</h4>
+                <form class="needs-validation" asp-controller="Resultado" asp-action="@(editMode ? "Edit" : "Create")" novalidate="">
+                    <div class="row g-3">
+                        <div class="mb-3">
+                            @if (!editMode)
+                            {
+                            <select asp-for="IdPruebaL" asp-items="@(new SelectList(Model.pruebaLaboratorio,"Id", "Nombre"))" class="form-control form-control-lg">
+                                <option value="0">-- Select a Nombre --</option>
+                            </select>
+                            <span asp-validation-for="IdPruebaL" class="text-danger"></span>
+                   
+                                <input type="hidden" asp-for="Estado" value="false" />
+                                <input type="hidden" asp-for="IdCita" />
+                                <input type="hidden" asp-for="IdPaciente" />
+                            }
+                            else
+                            {
+                                <input type="hidden" asp-for="IdCita" />
+                                <input type="hidden" asp-for="IdPaciente" />
+                                <input type="hidden" asp-for="IdPruebaL" />
+                                <select asp-for="Estado">
+                                    <option value="0">-- Select a Estado --</option>
+                                    <option value="true">true</option>
+                                    <option value="false">false</option>
+                                </select>
+                            }
+                        </div>
+                        <hr class="my-4">
+
+                        <button class="w-40 btn btn-primary btn-lg" type="submit">@(editMode ? "Editar Resultado" : "Crear Resultado")</button>
+                        <button class="w-40 btn btn-danger btn-lg" asp-controller="Resultado" asp-action="Index">Volver</button>
+                    </div>
+                </form>
+
+        </div>
+    </main>
+</div>

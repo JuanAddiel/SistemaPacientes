@@ -1,10 +1,13 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.EntityFrameworkCore;
+using SistemaPacientes.Core.Application.Helpers;
 using SistemaPacientes.Core.Application.ViewModels.User;
 using SistemaPacientes.Core.Domain.Common;
 using SistemaPacientes.Core.Domain.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -12,8 +15,12 @@ namespace SistemaPacientes.Infrastructure.Persistence.Context
 {
     public class SistemaPacienteContext: DbContext
     {
-        public SistemaPacienteContext(DbContextOptions<SistemaPacienteContext> options) : base(options)
+        private readonly IHttpContextAccessor _httpContext;
+        private readonly UserViewModel user;
+        public SistemaPacienteContext(DbContextOptions<SistemaPacienteContext> options/*, IHttpContextAccessor httpContext*/) : base(options)
         {
+            //_httpContext = httpContext;
+            //user = _httpContext.HttpContext.Session.Get<UserViewModel>("user");
         }
         public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = new())
         {
@@ -23,11 +30,11 @@ namespace SistemaPacientes.Infrastructure.Persistence.Context
                 {
                     case EntityState.Added:
                         entry.Entity.CreatedAt = DateTime.Now;
-                        entry.Entity.CreatedBy = "Default";
+                        entry.Entity.CreatedBy = "Juan";
                         break;
                     case EntityState.Modified:
                         entry.Entity.LastModifiedAt = DateTime.Now;
-                        entry.Entity.LastModifiedBy = "Default";
+                        entry.Entity.LastModifiedBy = "Juan";
                         break;
                 }
             }
@@ -62,35 +69,45 @@ namespace SistemaPacientes.Infrastructure.Persistence.Context
             modelBuilder.Entity<Role>().HasKey(p => p.Id);
             #endregion
             #region Foreign Key 
+
+
             modelBuilder.Entity<Paciente>()
                 .HasMany<Cita>(p => p.Citas)
                 .WithOne( p => p.Paciente)
                 .HasForeignKey(p => p.IdPaciente)
-                .OnDelete(DeleteBehavior.Cascade);
+                .OnDelete(DeleteBehavior.NoAction);
+
+            modelBuilder.Entity<Paciente>()
+                .HasMany<ResultadoLaboratorio>(p => p.ResultadoLaboratorios)
+                .WithOne(p => p.paciente)
+                .HasForeignKey(p => p.IdPaciente)
+                .IsRequired(false)
+                .OnDelete(DeleteBehavior.NoAction);
+
+            modelBuilder.Entity<Cita>()
+                .HasMany<ResultadoLaboratorio>(p => p.ResultadosLaboratorio)
+                .WithOne(p => p.Cita)
+                .HasForeignKey(p => p.IdCita)
+                .OnDelete(DeleteBehavior.NoAction);
+
+
+            modelBuilder.Entity<PruebaLaboratorio>()
+                .HasMany<ResultadoLaboratorio>(p => p.ResultadoLaboratorios)
+                .WithOne(p => p.pruebaLaboratorio)
+                .HasForeignKey(p => p.IdPruebaL)
+                .OnDelete(DeleteBehavior.NoAction);
 
             modelBuilder.Entity<Medico>()
                 .HasMany<Cita>(p => p.citas)
                 .WithOne(p => p.Medico)
                 .HasForeignKey(p => p.IdMedico)
-                .OnDelete(DeleteBehavior.Cascade);
-
-            modelBuilder.Entity<Paciente>()
-                .HasMany<ResultadoLaboratorio>(r => r.ResultadoLaboratorios)
-                .WithOne(p=>p.Paciente)
-                .HasForeignKey(p => p.IdPaciente)
-                .OnDelete(DeleteBehavior.Cascade);
-
-            modelBuilder.Entity<PruebaLaboratorio>()
-                .HasMany<ResultadoLaboratorio>(r => r.ResultadoLaboratorio)
-                .WithOne(p => p.PruebaLaboratorio)  
-                .HasForeignKey(p => p.IdPruebaLaboratorio)
-                .OnDelete(DeleteBehavior.Cascade);
+                .OnDelete(DeleteBehavior.NoAction);
 
             modelBuilder.Entity<Role>()
                 .HasMany<Usuario>(Role => Role.Usuarios)
                 .WithOne(Usuario => Usuario.Role)
                 .HasForeignKey(Usuario => Usuario.RoleId)
-                .OnDelete(DeleteBehavior.Cascade);
+                .OnDelete(DeleteBehavior.NoAction);
 
             #endregion
             #region Properties

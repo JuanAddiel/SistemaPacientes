@@ -17,5 +17,6 @@ namespace SistemaPacientes.Core.Domain.Entities
         public string HoraCita { get; set; }
         public string MotivoCita { get; set; }
         public bool Estado { get; set; }
+        public ICollection<ResultadoLaboratorio> ResultadosLaboratorio { get; set; }
     }
 }

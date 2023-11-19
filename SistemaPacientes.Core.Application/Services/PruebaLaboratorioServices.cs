@@ -40,7 +40,7 @@ namespace SistemaPacientes.Core.Application.Services
 
         public async Task<ICollection<PruebaLaboratorioViewModel>> GetAllAsync()
         {
-            var prueba = await _pruebaRepository.GetAllAsyncInclude(new List<string> { "ResultadoLaboratorio" });
+            var prueba = await _pruebaRepository.GetAllAsyncInclude(new List<string> { "ResultadoLaboratorios" });
             return prueba.Select(p => new PruebaLaboratorioViewModel
             {
                 Id = p.Id,

@@ -17,6 +17,14 @@ namespace SistemaPacientes.WebApp.Controllers
         }
         public async Task<IActionResult> Index()
         {
+            if (!_validateSession.HasUser())
+            {
+                return RedirectToRoute(new { controller = "Usuario", action = "Index" });
+            }
+            if (_validateSession.HasAdmin())
+            {
+                return RedirectToRoute(new { controller = "Home", action = "Index" });
+            }
             return View(await _pacienteServices.GetAllAsync());
         }
         public async Task<IActionResult> Create()
@@ -24,6 +32,10 @@ namespace SistemaPacientes.WebApp.Controllers
             if (!_validateSession.HasUser())
             {
                 return RedirectToRoute(new { controller = "Usuario", action = "Index" });
+            }
+            if (_validateSession.HasAdmin())
+            {
+                return RedirectToRoute(new { controller = "Home", action = "Index" });
             }
             PacienteSaveViewModel vm = new();
             return View("SavePaciente", vm);
@@ -35,6 +47,10 @@ namespace SistemaPacientes.WebApp.Controllers
             if (!_validateSession.HasUser())
             {
                 return RedirectToRoute(new { controller = "Usuario", action = "Index" });
+            }
+            if (_validateSession.HasAdmin())
+            {
+                return RedirectToRoute(new { controller = "Home", action = "Index" });
             }
             if (!ModelState.IsValid)
             {
@@ -55,6 +71,10 @@ namespace SistemaPacientes.WebApp.Controllers
             {
                 return RedirectToRoute(new { controller = "Usuario", action = "Index" });
             }
+            if (_validateSession.HasAdmin())
+            {
+                return RedirectToRoute(new { controller = "Home", action = "Index" });
+            }
             PacienteSaveViewModel vm = await _pacienteServices.GetByIdAsync(id);
             return View("SavePaciente", vm);
         }
@@ -64,6 +84,10 @@ namespace SistemaPacientes.WebApp.Controllers
             if (!_validateSession.HasUser())
             {
                 return RedirectToRoute(new { controller = "Usuario", action = "Index" });
+            }
+            if (_validateSession.HasAdmin())
+            {
+                return RedirectToRoute(new { controller = "Home", action = "Index" });
             }
             if (!ModelState.IsValid)
             {
@@ -81,6 +105,10 @@ namespace SistemaPacientes.WebApp.Controllers
             {
                 return RedirectToRoute(new { controller = "Usuario", action = "Index" });
             }
+            if (_validateSession.HasAdmin())
+            {
+                return RedirectToRoute(new { controller = "Home", action = "Index" });
+            }
 
             return View(await _pacienteServices.GetByIdAsync(id));
         }
@@ -90,6 +118,10 @@ namespace SistemaPacientes.WebApp.Controllers
             if (!_validateSession.HasUser())
             {
                 return RedirectToRoute(new { controller = "Usuario", action = "Index" });
+            }
+            if (_validateSession.HasAdmin())
+            {
+                return RedirectToRoute(new { controller = "Home", action = "Index" });
             }
             await _pacienteServices.DeleteAsync(id);
             return RedirectToRoute(new { controller = "Paciente", action = "Index" });

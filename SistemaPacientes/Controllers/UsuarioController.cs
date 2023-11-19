@@ -26,6 +26,10 @@ namespace SistemaPacientes.WebApp.Controllers
             {
                 return RedirectToRoute(new { controller = "Home", action = "Index" });
             }
+            if(!_validateSession.HasAdmin())
+            {
+                return RedirectToRoute(new { controller = "Home", action = "Index" });
+            }
             return View(await _usuarioServices.GetAllAsync());
         }
         public IActionResult Index()
@@ -62,9 +66,9 @@ namespace SistemaPacientes.WebApp.Controllers
         }
         public async Task<IActionResult> Register()
         {
-            if (!_validateSession.HasUser())
+            if (!_validateSession.HasAdmin())
             {
-                return RedirectToRoute(new { controller = "Usuario", action = "Index" });
+                return RedirectToRoute(new { controller = "Home", action = "Index" });
             }
             UserSaveViewModel vm =new();
             vm.Roles = await _roleServices.GetAllAsync();
@@ -82,16 +86,16 @@ namespace SistemaPacientes.WebApp.Controllers
         [HttpPost]
         public async Task<IActionResult> Register(UserSaveViewModel userView)
         {
-            if (!_validateSession.HasUser())
-            {
-                return RedirectToRoute(new { controller = "Usuario", action = "Index" });
-            }
+
             if (!ModelState.IsValid)
             {
                 userView.Roles = await _roleServices.GetAllAsync();
                 return View("Register", userView);
             }
-            userView.Password = PasswordEncryption.EncryptionPass(userView.Password);
+            if (!_validateSession.HasAdmin())
+            {
+                return RedirectToRoute(new { controller = "Home", action = "Index" });
+            }
             await _usuarioServices.AddAsync(userView);
             return RedirectToRoute(new { controller = "Usuario", action = "GetAll" });
         }
@@ -100,6 +104,10 @@ namespace SistemaPacientes.WebApp.Controllers
             if (!_validateSession.HasUser())
             {
                 return RedirectToRoute(new { controller = "Usuario", action = "Index" });
+            }
+            if (!_validateSession.HasAdmin())
+            {
+                return RedirectToRoute(new { controller = "Home", action = "Index" });
             }
             UserSaveViewModel vm = await _usuarioServices.GetByIdAsync(id);
             vm.Roles = await _roleServices.GetAllAsync();
@@ -112,7 +120,7 @@ namespace SistemaPacientes.WebApp.Controllers
             {
                 return RedirectToRoute(new { controller = "Usuario", action = "Index" });
             }
-            if (_validateSession.HasAdmin())
+            if (!_validateSession.HasAdmin())
             {
                 return RedirectToRoute(new { controller = "Home", action = "Index" });
             }
@@ -128,7 +136,7 @@ namespace SistemaPacientes.WebApp.Controllers
         }
         public async Task<IActionResult> Delete(int id)
         {
-            if (_validateSession.HasAdmin())
+            if (!_validateSession.HasAdmin())
             {
                 return RedirectToRoute(new { controller = "Home", action = "Index" });
             }
@@ -142,7 +150,7 @@ namespace SistemaPacientes.WebApp.Controllers
         [HttpPost]
         public async Task<IActionResult> DeletePost(int id)
         {
-            if (_validateSession.HasAdmin())
+            if (!_validateSession.HasAdmin())
             {
                 return RedirectToRoute(new { controller = "Home", action = "Index" });
             }

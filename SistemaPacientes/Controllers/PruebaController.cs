@@ -39,6 +39,7 @@ namespace SistemaPacientes.WebApp.Controllers
                 return RedirectToRoute(new { controller = "Home", action = "Index" });
             }
             PruebaLaboratorioSaveViewModel vm = new();
+
             return View("SavePrueba", vm);
         }
         [HttpPost]

@@ -5,6 +5,22 @@
       "PackagePath": "staticwebassets\\SistemaPacientes.WebApp.bundle.scp.css"
     },
     {
+      "Id": "C:\\Users\\addie\\OneDrive\\Desktop\\Proyect\\SistemaPacientes\\SistemaPacientes\\wwwroot\\Images\\Medicos\\1\\609a03eb-68ae-4400-987f-ede9db3fd5ca.png",
+      "PackagePath": "staticwebassets\\Images\\Medicos\\1\\609a03eb-68ae-4400-987f-ede9db3fd5ca.png"
+    },
+    {
+      "Id": "C:\\Users\\addie\\OneDrive\\Desktop\\Proyect\\SistemaPacientes\\SistemaPacientes\\wwwroot\\Images\\Medicos\\2\\22757a48-492c-43b0-9ce6-9f3a6afc07cd.jpg",
+      "PackagePath": "staticwebassets\\Images\\Medicos\\2\\22757a48-492c-43b0-9ce6-9f3a6afc07cd.jpg"
+    },
+    {
+      "Id": "C:\\Users\\addie\\OneDrive\\Desktop\\Proyect\\SistemaPacientes\\SistemaPacientes\\wwwroot\\Images\\Pacientes\\1\\e6b79185-b64f-419f-8c75-b72a7a610160.JPG",
+      "PackagePath": "staticwebassets\\Images\\Pacientes\\1\\e6b79185-b64f-419f-8c75-b72a7a610160.JPG"
+    },
+    {
+      "Id": "C:\\Users\\addie\\OneDrive\\Desktop\\Proyect\\SistemaPacientes\\SistemaPacientes\\wwwroot\\Images\\Pacientes\\2\\dfcc2f56-62ec-4d89-a797-79dfd43fcc8f.jpg",
+      "PackagePath": "staticwebassets\\Images\\Pacientes\\2\\dfcc2f56-62ec-4d89-a797-79dfd43fcc8f.jpg"
+    },
+    {
       "Id": "C:\\Users\\addie\\OneDrive\\Desktop\\Proyect\\SistemaPacientes\\SistemaPacientes\\wwwroot\\Images\\Pacientes\\6\\c20df786-9bc5-46f8-80c1-bdb679c0f32c.JPG",
       "PackagePath": "staticwebassets\\Images\\Pacientes\\6\\c20df786-9bc5-46f8-80c1-bdb679c0f32c.JPG"
     },

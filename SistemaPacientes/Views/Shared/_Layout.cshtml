@@ -38,30 +38,47 @@
                             Home
                         </a>
                     </li>
-                    <li class="sidebar-item">
-                            <a asp-controller="Medico" asp-action="Index" class="sidebar-link @(currentController == "Medico" && currentAction == "Index" ? "active" : "")">
-                            <i class="fa-solid fa-user-doctor pe-2"></i>
-                             Medicos
-                        </a>
-                        </li>
-                        <li class="sidebar-item">
-                            <a asp-controller="Paciente" asp-action="Index" class="sidebar-link @(currentController == "Paciente" && currentAction == "Index" ? "active" : "")">
-                                <i class="fa-solid fa-user-doctor pe-2"></i>
-                                Paciente
-                            </a>
-                        </li>
-                        <li class="sidebar-item">
-                            <a asp-controller="Prueba" asp-action="Index" class="sidebar-link @(currentController == "Prueba" && currentAction == "Index" ? "active" : "")">
-                                <i class="fa-solid fa-user-doctor pe-2"></i>
-                                Prueba Laboratorio
-                            </a>
-                        </li>
-                        <li class="sidebar-item">
-                            <a asp-controller="Usuario" asp-action="GetAll" class="sidebar-link @(currentController == "Usuario" && currentAction == "Index" ? "active" : "")">
-                                <i class="fa-solid fa-user-doctor pe-2"></i>
-                                Usuarios
-                            </a>
-                        </li>
+                        @if(user.RoleId == 1)
+                        {
+                            <li class="sidebar-item">
+                                <a asp-controller="Medico" asp-action="Index" class="sidebar-link @(currentController == "Medico" && currentAction == "Index" ? "active" : "")">
+                                    <i class="fa-solid fa-user-doctor pe-2"></i>
+                                    Medicos
+                                </a>
+                            </li>
+                            <li class="sidebar-item">
+                                <a asp-controller="Prueba" asp-action="Index" class="sidebar-link @(currentController == "Prueba" && currentAction == "Index" ? "active" : "")">
+                                    <i class="fa-solid fa-user-doctor pe-2"></i>
+                                    Prueba Laboratorio
+                                </a>
+                            </li>
+
+                            <li class="sidebar-item">
+                                <a asp-controller="Usuario" asp-action="GetAll" class="sidebar-link @(currentController == "Usuario" && currentAction == "Index" ? "active" : "")">
+                                    <i class="fa-solid fa-user-doctor pe-2"></i>
+                                    Usuarios
+                                </a>
+                            </li>
+                        }
+                        else
+                        {
+
+                            <li class="sidebar-item">
+                                <a asp-controller="Paciente" asp-action="Index" class="sidebar-link @(currentController == "Paciente" && currentAction == "Index" ? "active" : "")">
+                                    <i class="fa-solid fa-user-doctor pe-2"></i>
+                                    Paciente
+                                </a>
+                            </li>
+
+
+                            <li class="sidebar-item">
+                                <a asp-controller="Cita" asp-action="Index" class="sidebar-link @(currentController == "Cita" && currentAction == "Index" ? "active" : "")">
+                                    <i class="fa-solid fa-user-doctor pe-2"></i>
+                                    Cita
+                                </a>
+                            </li>
+                        }
+
                         <li class="sidebar-item">
                             <a asp-controller="Usuario" asp-action="Logout" class="sidebar-link @(currentController == "Usuario" && currentAction == "Index" ? "active" : "")">
                                 Cerrar Seccion

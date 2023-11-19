@@ -17,10 +17,6 @@ namespace SistemaPacientes.Controllers
 
         public IActionResult Index()
         {
-            if(_validateSession.HasAdmin())
-            {
-                return RedirectToRoute(new { controller = "Home", action = "Index" });
-            }
             if (!_validateSession.HasUser())
             {
                 return RedirectToRoute(new { controller = "Usuario", action = "Index" });

@@ -1,4 +1,6 @@
-﻿using SistemaPacientes.Core.Domain.Entities;
+﻿using SistemaPacientes.Core.Application.ViewModels.Paciente;
+using SistemaPacientes.Core.Application.ViewModels.ResultadoLaboratorio;
+using SistemaPacientes.Core.Domain.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,6 +18,8 @@ namespace SistemaPacientes.Core.Application.ViewModels.Cita
         public string HoraCita { get; set; }
         public string MotivoCita { get; set; }
         public bool Estado { get; set; }
+        public ICollection<ResultadoLaboratorioViewModel> ResultadoLaboratorio { get; set; }
+        public PacienteViewModel Paciente { get; set; }
         public string NombrePaciente { get; set; }
         public string NombreMedico { get; set; }
     }

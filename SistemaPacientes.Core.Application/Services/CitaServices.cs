@@ -1,6 +1,7 @@
 ﻿using SistemaPacientes.Core.Application.Interfaces.Repositories;
 using SistemaPacientes.Core.Application.Interfaces.Services;
 using SistemaPacientes.Core.Application.ViewModels.Cita;
+using SistemaPacientes.Core.Application.ViewModels.ResultadoLaboratorio;
 using SistemaPacientes.Core.Domain.Entities;
 using System;
 using System.Collections.Generic;
@@ -13,9 +14,11 @@ namespace SistemaPacientes.Core.Application.Services
     public class CitaServices : ICitaServices
     {
         private readonly ICitaRepository _citaRepository;
-        public CitaServices(ICitaRepository citaRepository)
+        private readonly IResultadoRepository _resultadoRepository;
+        public CitaServices(ICitaRepository citaRepository, IResultadoRepository resultadoRepository)
         {
             _citaRepository = citaRepository;
+            _resultadoRepository = resultadoRepository;
         }
         public async Task<CitaSaveViewModel> AddAsync(CitaSaveViewModel saveViewModel)
         {
@@ -52,7 +55,8 @@ namespace SistemaPacientes.Core.Application.Services
 
         public async Task<ICollection<CitaViewModel>> GetAllAsync()
         {
-            var citas = await _citaRepository.GetAllAsyncInclude(new List<string> { "Medico","Paciente"});
+            var resultado = await _resultadoRepository.GetAllAsyncInclude(new List<string> { "pruebaLaboratorio", "paciente", "Cita" });
+            var citas = await _citaRepository.GetAllAsyncInclude(new List<string> { "Medico","Paciente", "ResultadosLaboratorio"});
             return citas.Select(cita => new CitaViewModel
             {
                 Id = cita.Id,
@@ -63,8 +67,18 @@ namespace SistemaPacientes.Core.Application.Services
                 FechaCita = cita.FechaCita,
                 HoraCita = cita.HoraCita,
                 NombreMedico = cita.Medico.Nombre,
-                NombrePaciente = cita.Paciente.Nombre
-
+                NombrePaciente = cita.Paciente.Nombre,
+                ResultadoLaboratorio = resultado != null ? resultado.Where(r => r.IdCita == cita.Id).Select(r => new ResultadoLaboratorioViewModel
+                {
+                    Id = r.Id,
+                    IdCitaP = r.IdCita,
+                    IdPruebaL = r.IdPruebaL,
+                    IdPaciente = r.IdPaciente,
+                    Estado = r.Estado,
+                    NombrePruebaLaboratorio = r.pruebaLaboratorio.Nombre,
+                    NombrePaciente = r.paciente.Nombre + "" + r.paciente.Apellido,
+                    MotivoCita = r.Cita.MotivoCita
+                }).ToList() : null
             }).ToList();
         }
 

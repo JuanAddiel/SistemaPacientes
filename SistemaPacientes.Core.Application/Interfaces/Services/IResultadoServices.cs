@@ -9,5 +9,6 @@ namespace SistemaPacientes.Core.Application.Interfaces.Services
 {
     public interface IResultadoServices:IGenericServices<ResultadoLaboratorioSaveViewModel, ResultadoLaboratorioViewModel>
     {
+        public Task<ICollection<ResultadoLaboratorioViewModel>> GetAllCita(int id);
     }
 }

@@ -10,6 +10,6 @@ namespace SistemaPacientes.Core.Domain.Entities
     public class PruebaLaboratorio: AuditableBaseEntity
     {
         public string Nombre { get; set; }
-        public ICollection<ResultadoLaboratorio> ResultadoLaboratorio { get; set; }
+        public ICollection<ResultadoLaboratorio> ResultadoLaboratorios { get; set; }
     }
 }

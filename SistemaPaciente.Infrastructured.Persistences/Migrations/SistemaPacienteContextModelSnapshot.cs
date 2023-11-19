@@ -239,10 +239,13 @@ namespace SistemaPaciente.Infrastructure.Persistence.Migrations
                     b.Property<bool>("Estado")
                         .HasColumnType("bit");
 
-                    b.Property<int>("IdPaciente")
+                    b.Property<int>("IdCita")
                         .HasColumnType("int");
 
-                    b.Property<int>("IdPruebaLaboratorio")
+                    b.Property<int?>("IdPaciente")
+                        .HasColumnType("int");
+
+                    b.Property<int>("IdPruebaL")
                         .HasColumnType("int");
 
                     b.Property<DateTime?>("LastModifiedAt")
@@ -253,9 +256,11 @@ namespace SistemaPaciente.Infrastructure.Persistence.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("IdCita");
+
                     b.HasIndex("IdPaciente");
 
-                    b.HasIndex("IdPruebaLaboratorio");
+                    b.HasIndex("IdPruebaL");
 
                     b.ToTable("ResultadoLaboratorio", (string)null);
                 });
@@ -342,13 +347,13 @@ namespace SistemaPaciente.Infrastructure.Persistence.Migrations
                     b.HasOne("SistemaPacientes.Core.Domain.Entities.Medico", "Medico")
                         .WithMany("citas")
                         .HasForeignKey("IdMedico")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.HasOne("SistemaPacientes.Core.Domain.Entities.Paciente", "Paciente")
                         .WithMany("Citas")
                         .HasForeignKey("IdPaciente")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.Navigation("Medico");
@@ -358,21 +363,28 @@ namespace SistemaPaciente.Infrastructure.Persistence.Migrations
 
             modelBuilder.Entity("SistemaPacientes.Core.Domain.Entities.ResultadoLaboratorio", b =>
                 {
-                    b.HasOne("SistemaPacientes.Core.Domain.Entities.Paciente", "Paciente")
+                    b.HasOne("SistemaPacientes.Core.Domain.Entities.Cita", "Cita")
+                        .WithMany("ResultadosLaboratorio")
+                        .HasForeignKey("IdCita")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
+                    b.HasOne("SistemaPacientes.Core.Domain.Entities.Paciente", "paciente")
                         .WithMany("ResultadoLaboratorios")
                         .HasForeignKey("IdPaciente")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.NoAction);
+
+                    b.HasOne("SistemaPacientes.Core.Domain.Entities.PruebaLaboratorio", "pruebaLaboratorio")
+                        .WithMany("ResultadoLaboratorios")
+                        .HasForeignKey("IdPruebaL")
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
-                    b.HasOne("SistemaPacientes.Core.Domain.Entities.PruebaLaboratorio", "PruebaLaboratorio")
-                        .WithMany("ResultadoLaboratorio")
-                        .HasForeignKey("IdPruebaLaboratorio")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                    b.Navigation("Cita");
 
-                    b.Navigation("Paciente");
+                    b.Navigation("paciente");
 
-                    b.Navigation("PruebaLaboratorio");
+                    b.Navigation("pruebaLaboratorio");
                 });
 
             modelBuilder.Entity("SistemaPacientes.Core.Domain.Entities.Usuario", b =>
@@ -380,10 +392,15 @@ namespace SistemaPaciente.Infrastructure.Persistence.Migrations
                     b.HasOne("SistemaPacientes.Core.Domain.Entities.Role", "Role")
                         .WithMany("Usuarios")
                         .HasForeignKey("RoleId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.Navigation("Role");
+                });
+
+            modelBuilder.Entity("SistemaPacientes.Core.Domain.Entities.Cita", b =>
+                {
+                    b.Navigation("ResultadosLaboratorio");
                 });
 
             modelBuilder.Entity("SistemaPacientes.Core.Domain.Entities.Medico", b =>
@@ -400,7 +417,7 @@ namespace SistemaPaciente.Infrastructure.Persistence.Migrations
 
             modelBuilder.Entity("SistemaPacientes.Core.Domain.Entities.PruebaLaboratorio", b =>
                 {
-                    b.Navigation("ResultadoLaboratorio");
+                    b.Navigation("ResultadoLaboratorios");
                 });
 
             modelBuilder.Entity("SistemaPacientes.Core.Domain.Entities.Role", b =>

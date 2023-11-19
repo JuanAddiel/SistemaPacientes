@@ -1,0 +1,25 @@
+﻿@using SistemaPacientes.Core.Application.ViewModels.ResultadoLaboratorio
+@model ICollection<ResultadoLaboratorioViewModel>
+@{
+    ViewData["Title"] = "Resultado de Laboratorio";
+}
+
+<h2>Resultado de Laboratorio</h2>
+
+@foreach(var item in Model)
+{
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">Cita: @item.MotivoCita</h5>
+            <h5 class="card-title">Nombre Paciente: @item.NombrePaciente</h5>
+            <h6 class="card-subtitle mb-2 text-muted">Prueba: @item.NombrePruebaLaboratorio</h6>
+            <p class="card-text">Estado: @item.Estado</p>
+
+            <a class="btn btn-success" asp-controller="Cita" asp-action="Index">Cerrar Resultados</a>
+            @if(item.Estado == false)
+            {
+                <a class="btn btn-success" asp-controller="Resultado" asp-action="Edit" asp-route-id="@item.Id">Completar Cita</a>
+            }
+        </div>
+    </div>
+}
